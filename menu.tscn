@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://c03d6sdfa4h50"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_r2gwo"]
+[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="2_ku3fh"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_r2gwo")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 640.0
+offset_top = 174.0
+offset_right = 1268.0
+offset_bottom = 377.0
+theme_override_fonts/font = ExtResource("2_ku3fh")
+theme_override_font_sizes/font_size = 200
+text = "Daikon
+"
+
+[node name="Start" type="Button" parent="."]
+offset_left = 694.0
+offset_top = 500.0
+offset_right = 1220.0
+offset_bottom = 708.0
+theme_override_fonts/font = ExtResource("2_ku3fh")
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 694.0
+offset_top = 744.0
+offset_right = 1220.0
+offset_bottom = 952.0
+theme_override_fonts/font = ExtResource("2_ku3fh")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 698.0
+offset_top = 980.0
+offset_right = 1224.0
+offset_bottom = 1188.0
+theme_override_fonts/font = ExtResource("2_ku3fh")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
