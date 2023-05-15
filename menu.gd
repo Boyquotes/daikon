@@ -14,8 +14,12 @@ func _process(delta):
 	pass
 
 
+func _on_start_pressed():
+	pass
+
+
 func _on_credits_pressed():
-	pass # Replace with function body.
+	tree.change_scene_to_file('credits.tscn')
 
 
 func _on_quit_pressed():

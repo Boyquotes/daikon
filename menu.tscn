@@ -35,13 +35,14 @@ theme_override_font_sizes/font_size = 60
 text = "Credits"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 698.0
+offset_left = 694.0
 offset_top = 980.0
-offset_right = 1224.0
+offset_right = 1220.0
 offset_bottom = 1188.0
 theme_override_fonts/font = ExtResource("2_ku3fh")
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
