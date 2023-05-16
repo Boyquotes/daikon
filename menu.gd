@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 @onready var tree = get_tree()
@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func _on_start_pressed():
-	pass
+	tree.change_scene_to_file('level.tscn')
 
 
 func _on_credits_pressed():
