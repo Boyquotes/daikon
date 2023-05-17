@@ -21,6 +21,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and jump < 1:
 		velocity.y = JUMP_VELOCITY
 		jump += 1
+		anim.play('Jump')
 	
 	if is_on_floor():
 		jump = 0

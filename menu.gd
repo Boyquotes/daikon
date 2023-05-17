@@ -2,6 +2,7 @@ extends Control
 
 
 @onready var tree = get_tree()
+@onready var audio = get_node('AudioStreamPlayer')
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,3 +25,7 @@ func _on_credits_pressed():
 
 func _on_quit_pressed():
 	tree.quit()
+
+
+func _on_audio_stream_player_finished():
+	audio.play()

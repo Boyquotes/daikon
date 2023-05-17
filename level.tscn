@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bebsh6l0l3eph"]
+[gd_scene load_steps=5 format=3 uid="uid://bebsh6l0l3eph"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
+[ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
 size = Vector2(1816.25, 105)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_1eiqh")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 104.0
@@ -40,3 +43,11 @@ shape = SubResource("RectangleShape2D_t8481")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_q3dmt")]
 position = Vector2(872, 304)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h36wp")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
