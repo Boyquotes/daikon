@@ -3,40 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
-size = Vector2(1816.25, 105)
+size = Vector2(1712.5, 482)
 
 [node name="Level" type="Node2D"]
-
-[node name="Panel" type="Panel" parent="."]
-offset_left = 104.0
-offset_top = 344.0
-offset_right = 2136.0
-offset_bottom = 1320.0
-
-[node name="Panel" type="Panel" parent="Panel"]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 680.0
-offset_right = 2616.0
-offset_bottom = 808.0
-
-[node name="Panel" type="Panel" parent="Panel/Panel"]
-layout_mode = 0
-offset_left = -768.0
-offset_top = 184.0
-offset_right = 920.0
-offset_bottom = 304.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(119, 231)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(865, 1033)
+position = Vector2(841, 913)
 shape = SubResource("RectangleShape2D_t8481")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1684.88, 857)
-shape = SubResource("RectangleShape2D_t8481")
+[node name="Panel" type="Panel" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -712.0
+offset_top = -256.0
+offset_right = 768.0
+offset_bottom = 208.0
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_q3dmt")]
 position = Vector2(872, 304)
