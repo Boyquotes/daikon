@@ -19,7 +19,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and jump < 1:
+	if (Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up")) and jump < 1:
 		velocity.y = JUMP_VELOCITY
 		jump += 1
 		anim.play('Jump')
