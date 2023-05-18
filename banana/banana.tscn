@@ -7,8 +7,10 @@
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.43051e-06, -5)
 rotation = -0.657541
-scale = Vector2(0.1452, 0.118175)
+scale = Vector2(0.8, 0.652)
 texture = ExtResource("1_dj21b")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-8, 24)
+scale = Vector2(5, 5)
 polygon = PackedVector2Array(-24, 2.08165e-12, -16, 11, -8, 13, 6, 13, 14, 10, 24, 2.08165e-12, 24, -17, 2.08165e-12, -8, -16, -9)

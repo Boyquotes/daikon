@@ -136,14 +136,12 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -29)
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_l800a")
-animation = &"Jump"
+animation = &"Run"
 frame = 1
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -19)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_qjs8k")
-
-[node name="Pusher" type="Node2D" parent="."]

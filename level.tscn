@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bebsh6l0l3eph"]
+[gd_scene load_steps=9 format=3 uid="uid://bebsh6l0l3eph"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
+[ext_resource type="Texture2D" uid="uid://kuxotuh2gesv" path="res://assets/bg/bg1.jpeg" id="2_tojij"]
 [ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://banana/banana.tscn" id="3_85x0w"]
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
-size = Vector2(1816.25, 105)
+size = Vector2(2058.06, 19.125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30sho"]
-size = Vector2(1068, 101)
+size = Vector2(1070, 18.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3od3"]
 size = Vector2(3018, 482)
@@ -17,70 +18,55 @@ size = Vector2(3018, 482)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1eiqh")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = 136.0
-offset_top = 1208.0
-offset_right = 1824.0
-offset_bottom = 1328.0
+[node name="Bg1" type="Sprite2D" parent="."]
+position = Vector2(1024, 768)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tojij")
 
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 904.0
-offset_top = 1024.0
-offset_right = 2720.0
-offset_bottom = 1152.0
-
-[node name="Panel3" type="Panel" parent="."]
-offset_left = 2789.0
-offset_top = 1202.0
-offset_right = 3867.0
-offset_bottom = 1313.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Shelves" type="StaticBody2D" parent="."]
 position = Vector2(119, 231)
 
-[node name="Collision1" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(865, 1033)
+[node name="Shelf 1" type="CollisionShape2D" parent="Shelves"]
+position = Vector2(790.03, 797.875)
 shape = SubResource("RectangleShape2D_t8481")
 
-[node name="Collision2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1684.88, 857)
+[node name="Collision2" type="CollisionShape2D" parent="Shelves"]
+unique_name_in_owner = true
+position = Vector2(907.062, 1055.44)
 shape = SubResource("RectangleShape2D_t8481")
 
-[node name="Collision3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(3210, 1025.5)
+[node name="Collision3" type="CollisionShape2D" parent="Shelves"]
+position = Vector2(1394, 551.75)
 shape = SubResource("RectangleShape2D_30sho")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_q3dmt")]
+[node name="Daikon" parent="." instance=ExtResource("1_q3dmt")]
 position = Vector2(712, 1144)
 
-[node name="RigidBody2D" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(640, 1040)
+[node name="Banana 1" parent="." instance=ExtResource("3_85x0w")]
+position = Vector2(456, 1160)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h36wp")
 volume_db = -15.0
 autoplay = true
 
-[node name="RigidBody2D2" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(848, 1128)
+[node name="Banana 2" parent="." instance=ExtResource("3_85x0w")]
+position = Vector2(128, 1168)
 
-[node name="RigidBody2D3" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(792, 1192)
+[node name="Banana 3" parent="." instance=ExtResource("3_85x0w")]
+position = Vector2(1136, 1176)
 
-[node name="RigidBody2D4" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(816, 1160)
-
-[node name="RigidBody2D5" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(872, 1088)
+[node name="Banana 4" parent="." instance=ExtResource("3_85x0w")]
+position = Vector2(1520, 1096)
 
 [node name="Fallzone" type="Area2D" parent="."]
-position = Vector2(86, 1394)
+position = Vector2(-2160, 1320)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fallzone"]
+[node name="Death Plane" type="CollisionShape2D" parent="Fallzone"]
 position = Vector2(3198, 231)
 shape = SubResource("RectangleShape2D_i3od3")
 
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
-[connection signal="body_entered" from="Fallzone" to="CharacterBody2D" method="_on_fallzone_body_entered"]
+[connection signal="body_entered" from="Fallzone" to="Daikon" method="_on_fallzone_body_entered"]
