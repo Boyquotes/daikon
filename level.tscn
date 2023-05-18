@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bebsh6l0l3eph"]
+[gd_scene load_steps=8 format=3 uid="uid://bebsh6l0l3eph"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
@@ -10,6 +10,9 @@ size = Vector2(1816.25, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30sho"]
 size = Vector2(1068, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3od3"]
+size = Vector2(3018, 482)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1eiqh")
@@ -70,5 +73,14 @@ position = Vector2(816, 1160)
 [node name="RigidBody2D5" parent="." instance=ExtResource("3_85x0w")]
 position = Vector2(816, 1088)
 
-[connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[node name="Fallzone" type="Area2D" parent="."]
+position = Vector2(86, 1394)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fallzone"]
+position = Vector2(3198, 231)
+shape = SubResource("RectangleShape2D_i3od3")
+
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="body_entered" from="Fallzone" to="CharacterBody2D" method="_on_fallzone_body_entered"]
