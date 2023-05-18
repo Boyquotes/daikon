@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
-[ext_resource type="PackedScene" uid="uid://cnkshv8s4enc8" path="res://banana/banana.tscn" id="3_85x0w"]
+[ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://banana/banana.tscn" id="3_85x0w"]
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
@@ -51,7 +51,7 @@ shape = SubResource("RectangleShape2D_30sho")
 position = Vector2(712, 1144)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(816, 1064)
+position = Vector2(640, 1040)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h36wp")
@@ -59,16 +59,16 @@ volume_db = -15.0
 autoplay = true
 
 [node name="RigidBody2D2" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(816, 1128)
+position = Vector2(848, 1128)
 
 [node name="RigidBody2D3" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(816, 1184)
+position = Vector2(792, 1192)
 
 [node name="RigidBody2D4" parent="." instance=ExtResource("3_85x0w")]
 position = Vector2(816, 1160)
 
 [node name="RigidBody2D5" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(816, 1088)
+position = Vector2(872, 1088)
 
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]

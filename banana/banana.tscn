@@ -1,18 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnkshv8s4enc8"]
+[gd_scene load_steps=2 format=3 uid="uid://dj240h7cckjy1"]
 
-[ext_resource type="Texture2D" uid="uid://cxtlxpklmobc4" path="res://banana/stackOfBananas.png" id="1_dj21b"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_51ltc"]
-size = Vector2(51, 32)
+[ext_resource type="Texture2D" uid="uid://cxtlxpklmobc4" path="res://assets/banana/stackOfBananas.png" id="1_dj21b"]
 
 [node name="RigidBody2D" type="RigidBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2)
-shape = SubResource("RectangleShape2D_51ltc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.43051e-06, -5)
 rotation = -0.657541
 scale = Vector2(0.1452, 0.118175)
 texture = ExtResource("1_dj21b")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, 2.08165e-12, -16, 11, -8, 13, 6, 13, 14, 10, 24, 2.08165e-12, 24, -17, 2.08165e-12, -8, -16, -9)
