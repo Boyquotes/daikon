@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnkshv8s4enc8"]
+[gd_scene load_steps=3 format=3 uid="uid://cnkshv8s4enc8"]
+
+[ext_resource type="Texture2D" uid="uid://cxtlxpklmobc4" path="res://banana/stackOfBananas.png" id="1_dj21b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51ltc"]
-size = Vector2(48, 20)
+size = Vector2(51, 32)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_51ltc")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -24.0
-offset_top = -8.0
-offset_right = 24.0
-offset_bottom = 8.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, -5)
+rotation = -0.657541
+scale = Vector2(0.1452, 0.118175)
+texture = ExtResource("1_dj21b")
