@@ -64,7 +64,7 @@ theme_override_fonts/font = ExtResource("2_ku3fh")
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_r4epq")
 volume_db = -5.0
 autoplay = true
@@ -72,4 +72,4 @@ autoplay = true
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]

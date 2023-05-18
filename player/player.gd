@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim = get_node("AnimationPlayer")
 @onready var node = get_node("AnimatedSprite2D")
+@onready var body = get_node('.')
 
 var jump = 0
 
@@ -36,6 +37,10 @@ func _physics_process(delta):
 		node.flip_h = true
 	
 	if direction:
+		for i in body.get_slide_collision_count():
+			var col = body.get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().apply_force(col.get_normal() * -5000)
 		velocity.x = direction * SPEED
 		if velocity.y == 0:
 			anim.play('Run')
