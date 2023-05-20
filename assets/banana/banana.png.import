@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxtlxpklmobc4"
-path="res://.godot/imported/stackOfBananas.png-ef62dac045774502fec16795548739ce.ctex"
+uid="uid://c3crrqxqb2852"
+path="res://.godot/imported/banana.png-bee9671df40a55ee2fdd5b31b2593f73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/banana/stackOfBananas.png"
-dest_files=["res://.godot/imported/stackOfBananas.png-ef62dac045774502fec16795548739ce.ctex"]
+source_file="res://assets/banana/banana.png"
+dest_files=["res://.godot/imported/banana.png-bee9671df40a55ee2fdd5b31b2593f73.ctex"]
 
 [params]
 

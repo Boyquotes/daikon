@@ -30,34 +30,25 @@ position = Vector2(119, 231)
 position = Vector2(790.03, 797.875)
 shape = SubResource("RectangleShape2D_t8481")
 
-[node name="Collision2" type="CollisionShape2D" parent="Shelves"]
+[node name="Shelf 2" type="CollisionShape2D" parent="Shelves"]
 unique_name_in_owner = true
 position = Vector2(907.062, 1055.44)
 shape = SubResource("RectangleShape2D_t8481")
 
-[node name="Collision3" type="CollisionShape2D" parent="Shelves"]
+[node name="Shelf 3" type="CollisionShape2D" parent="Shelves"]
 position = Vector2(1394, 551.75)
 shape = SubResource("RectangleShape2D_30sho")
 
 [node name="Daikon" parent="." instance=ExtResource("1_q3dmt")]
 position = Vector2(712, 1144)
 
-[node name="Banana 1" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(456, 1160)
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h36wp")
 volume_db = -15.0
 autoplay = true
 
-[node name="Banana 2" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(128, 1168)
-
-[node name="Banana 3" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(1136, 1176)
-
-[node name="Banana 4" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(1520, 1096)
+[node name="Banana 1" parent="." instance=ExtResource("3_85x0w")]
+position = Vector2(526, 1200)
 
 [node name="Fallzone" type="Area2D" parent="."]
 position = Vector2(-2160, 1320)
