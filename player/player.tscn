@@ -127,7 +127,7 @@ height = 64.0
 script = ExtResource("1_edm05")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
 limit_right = 2048
@@ -142,7 +142,7 @@ libraries = {
 position = Vector2(0, -29)
 scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_l800a")
-animation = &"Run"
+animation = &"Jump"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

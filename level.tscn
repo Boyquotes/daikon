@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
 [ext_resource type="Texture2D" uid="uid://kuxotuh2gesv" path="res://assets/bg/bg1.jpeg" id="2_tojij"]
-[ext_resource type="PackedScene" uid="uid://cnkshv8s4enc8" path="res://banana/banana.tscn" id="3_85x0w"]
+[ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://banana/banana.tscn" id="3_85x0w"]
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
@@ -58,6 +58,6 @@ metadata/_edit_group_ = true
 position = Vector2(3198, 231)
 shape = SubResource("RectangleShape2D_i3od3")
 
-[connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="body_entered" from="Fallzone" to="Daikon" method="_on_fallzone_body_entered"]

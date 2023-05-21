@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -300.0
+const FORCE = -150.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,10 +38,7 @@ func _physics_process(delta):
 		node.flip_h = true
 	
 	if direction:
-		for i in body.get_slide_collision_count():
-			var col = body.get_slide_collision(i)
-			if col.get_collider() is RigidBody2D:
-				col.get_collider().apply_force(col.get_normal() * -5000)
+		check_rigidbody_collision(body)
 		velocity.x = direction * SPEED
 		if velocity.y == 0:
 			anim.play('Run')
@@ -53,3 +51,10 @@ func _physics_process(delta):
 func _on_fallzone_body_entered(body):
 	if body.name == "Daikon":
 		get_tree().change_scene_to_file("res://level.tscn")
+		
+		
+func check_rigidbody_collision(body):
+	for i in body.get_slide_collision_count():
+			var col = body.get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().apply_force(col.get_normal() * FORCE)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c03d6sdfa4h50"]
+[gd_scene load_steps=6 format=3 uid="uid://c03d6sdfa4h50"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_r2gwo"]
 [ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="2_ku3fh"]
 [ext_resource type="AudioStream" uid="uid://ujg2w1p1yf8m" path="res://assets/sounds/intro.wav" id="3_r4epq"]
 [ext_resource type="PackedScene" uid="uid://crg1cbjd6oqt6" path="res://bg/bg.tscn" id="4_x5rxj"]
+[ext_resource type="AudioStream" uid="uid://5tdjcduxm6bh" path="res://assets/sounds/button.mp3" id="5_bptye"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -74,7 +75,12 @@ autoplay = true
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_x5rxj")]
 
+[node name="Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bptye")
+volume_db = -20.0
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Button" to="." method="_on_button_finished"]
