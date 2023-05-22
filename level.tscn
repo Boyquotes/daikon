@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
-[ext_resource type="Texture2D" uid="uid://kuxotuh2gesv" path="res://assets/bg/bg1.jpeg" id="2_tojij"]
+[ext_resource type="Texture2D" uid="uid://xtphl6se8qdp" path="res://bg/Background.jpeg" id="2_rcsu1"]
 [ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://banana/banana.tscn" id="3_85x0w"]
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
-size = Vector2(2058.06, 19.125)
+size = Vector2(1650.02, 18.2812)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30sho"]
 size = Vector2(1070, 18.5)
@@ -19,24 +19,24 @@ size = Vector2(3018, 482)
 script = ExtResource("1_1eiqh")
 
 [node name="Bg1" type="Sprite2D" parent="."]
-position = Vector2(1024, 768)
-scale = Vector2(2, 2)
-texture = ExtResource("2_tojij")
+position = Vector2(952, 712)
+scale = Vector2(0.926107, 0.926107)
+texture = ExtResource("2_rcsu1")
 
 [node name="Shelves" type="StaticBody2D" parent="."]
 position = Vector2(119, 231)
 
 [node name="Shelf 1" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(790.03, 797.875)
+position = Vector2(1380, 723)
 shape = SubResource("RectangleShape2D_t8481")
 
 [node name="Shelf 2" type="CollisionShape2D" parent="Shelves"]
 unique_name_in_owner = true
-position = Vector2(907.062, 1055.44)
+position = Vector2(702.008, 961.859)
 shape = SubResource("RectangleShape2D_t8481")
 
 [node name="Shelf 3" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(1394, 551.75)
+position = Vector2(1394, 500)
 shape = SubResource("RectangleShape2D_30sho")
 
 [node name="Daikon" parent="." instance=ExtResource("1_q3dmt")]
@@ -48,10 +48,10 @@ volume_db = -15.0
 autoplay = true
 
 [node name="Banana 1" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(526, 1200)
+position = Vector2(526, 1146)
 
 [node name="Fallzone" type="Area2D" parent="."]
-position = Vector2(-2160, 1320)
+position = Vector2(-2148, 1434)
 metadata/_edit_group_ = true
 
 [node name="Death Plane" type="CollisionShape2D" parent="Fallzone"]
