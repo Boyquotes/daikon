@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bebsh6l0l3eph"]
+[gd_scene load_steps=13 format=3 uid="uid://bebsh6l0l3eph"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
 [ext_resource type="Texture2D" uid="uid://xtphl6se8qdp" path="res://bg/Background.jpeg" id="2_rcsu1"]
 [ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://banana/banana.tscn" id="3_85x0w"]
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
+[ext_resource type="PackedScene" uid="uid://bmfa8k2i8j4j" path="res://blueberry/blueberry.tscn" id="6_8xyfo"]
+[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="6_25rcw"]
+[ext_resource type="Texture2D" uid="uid://cmwhsna1lqk47" path="res://assets/daikon/jump/jump2.png" id="6_ao3sp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
 size = Vector2(1650.02, 18.2812)
@@ -14,6 +17,9 @@ size = Vector2(1070, 18.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3od3"]
 size = Vector2(3018, 482)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpdhm"]
+size = Vector2(131.5, 163.5)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1eiqh")
@@ -48,7 +54,10 @@ volume_db = -15.0
 autoplay = true
 
 [node name="Banana 1" parent="." instance=ExtResource("3_85x0w")]
-position = Vector2(526, 1146)
+position = Vector2(1136, 1142)
+
+[node name="blueberry" parent="." instance=ExtResource("6_8xyfo")]
+position = Vector2(940, 1144)
 
 [node name="Fallzone" type="Area2D" parent="."]
 position = Vector2(-2148, 1434)
@@ -58,6 +67,32 @@ metadata/_edit_group_ = true
 position = Vector2(3198, 231)
 shape = SubResource("RectangleShape2D_i3od3")
 
-[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
+[node name="OldDaikon" type="Area2D" parent="."]
+position = Vector2(-56, 712)
+
+[node name="Sprite2D" type="Sprite2D" parent="OldDaikon"]
+position = Vector2(369, 385)
+scale = Vector2(0.106858, 0.0980862)
+texture = ExtResource("6_ao3sp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OldDaikon"]
+position = Vector2(387.25, 385)
+shape = SubResource("RectangleShape2D_kpdhm")
+
+[node name="Hint" type="Label" parent="OldDaikon"]
+offset_left = 429.0
+offset_top = 306.0
+offset_right = 707.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_25rcw")
+theme_override_font_sizes/font_size = 30
+text = "Get to da spaceship!!!"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
 [connection signal="body_entered" from="Fallzone" to="Daikon" method="_on_fallzone_body_entered"]
+[connection signal="body_entered" from="OldDaikon" to="." method="_on_old_daikon_body_entered"]
+[connection signal="body_exited" from="OldDaikon" to="." method="_on_old_daikon_body_exited"]
