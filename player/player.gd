@@ -43,6 +43,8 @@ func _physics_process(delta):
 		if velocity.y == 0:
 			anim.play('Run')
 	else:
+		if velocity.y == 0:
+			anim.play('Idle')
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()

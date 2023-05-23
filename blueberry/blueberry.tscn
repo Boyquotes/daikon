@@ -9,9 +9,10 @@ radius = 32.0
 mass = 0.12
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.56257, 1.84034)
 scale = Vector2(0.213101, 0.213101)
 texture = ExtResource("1_02t6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(1.56257, -0.159664)
 shape = SubResource("CircleShape2D_gnvtq")
