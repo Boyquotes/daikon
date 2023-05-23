@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://fuo6s8uiap4a"]
+
+[ext_resource type="Texture2D" uid="uid://cmwhsna1lqk47" path="res://assets/daikon/jump/jump2.png" id="1_7uffj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krtjr"]
+radius = 106.0
+height = 234.0
+
+[node name="OldDaikon" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.12321, 0.12321)
+texture = ExtResource("1_7uffj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -1)
+shape = SubResource("CapsuleShape2D_krtjr")
