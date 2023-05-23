@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://rovodlllofco"]
+
+[ext_resource type="Script" path="res://button/button.gd" id="1_kgddx"]
+[ext_resource type="FontFile" uid="uid://bj3wh6cocodsu" path="res://assets/fonts/NewTegomin-Regular.ttf" id="2_n1xsd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbq11"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1yxa"]
+radius = 50.0
+
+[node name="button" type="RigidBody2D"]
+script = ExtResource("1_kgddx")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gbq11")
+
+[node name="Player Detection" type="Area2D" parent="."]
+
+[node name="Player Detection Shape" type="CollisionShape2D" parent="Player Detection"]
+shape = SubResource("CircleShape2D_o1yxa")
+
+[node name="Action Text" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -100.0
+offset_right = 187.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n1xsd")
+theme_override_font_sizes/font_size = 32
+text = "Press E
+to Interact"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
