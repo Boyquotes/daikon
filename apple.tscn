@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://chsn7yk7wnaf0"]
+
+[ext_resource type="Texture2D" uid="uid://dhwt1f0haeh2k" path="res://applebetter.png" id="1_15fjv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l11fk"]
+radius = 71.007
+
+[node name="Apple" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 68)
+shape = SubResource("CircleShape2D_l11fk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(72, 65)
+scale = Vector2(0.115385, 0.104184)
+texture = ExtResource("1_15fjv")

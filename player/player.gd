@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var node = get_node("AnimatedSprite2D")
 @onready var body = get_node('.')
 
+
 var jump = 0
 
 func _physics_process(delta):
@@ -52,11 +53,14 @@ func _physics_process(delta):
 
 func _on_fallzone_body_entered(body):
 	if body.name == "Daikon":
-		get_tree().change_scene_to_file("res://level.tscn")
-		
+		get_tree().change_scene_to_file(get_tree().get_current_scene().get_name() + '.tscn')
 		
 func check_rigidbody_collision(body):
 	for i in body.get_slide_collision_count():
 			var col = body.get_slide_collision(i)
 			if col.get_collider() is RigidBody2D:
 				col.get_collider().apply_force(col.get_normal() * FORCE)
+
+func _on_tolevel_2_body_entered(body):
+	if body.name == 'Daikon':
+		get_tree().change_scene_to_file('res://puzzle_2.tscn') # Replace with function body.

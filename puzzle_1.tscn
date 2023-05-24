@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwpn06fyrp87j"]
+[gd_scene load_steps=17 format=3 uid="uid://bwpn06fyrp87j"]
 
 [ext_resource type="Texture2D" uid="uid://cinry1662m7rt" path="res://bg/scene1.png" id="1_0tva1"]
 [ext_resource type="PackedScene" uid="uid://dbsupiohteod" path="res://puzzle1_teeter.tscn" id="2_vr7po"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="3_8tqn6"]
 [ext_resource type="Texture2D" uid="uid://dkojvm8bvnd1a" path="res://puzzletools/teeter.png" id="4_dxeet"]
+[ext_resource type="PackedScene" uid="uid://chsn7yk7wnaf0" path="res://apple.tscn" id="5_ssm52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3518"]
 size = Vector2(540, 20)
@@ -32,7 +33,13 @@ radius = 26.9258
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khovf"]
 size = Vector2(270, 20)
 
-[node name="puzzle1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpd6w"]
+size = Vector2(2404, 371)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evdkk"]
+size = Vector2(835, 420)
+
+[node name="puzzle_1" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1025, 773)
@@ -98,3 +105,22 @@ texture = ExtResource("4_dxeet")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(1208, 1037)
 shape = SubResource("RectangleShape2D_khovf")
+
+[node name="Apple" parent="." instance=ExtResource("5_ssm52")]
+position = Vector2(125, 1146)
+
+[node name="fallzone" type="Area2D" parent="."]
+position = Vector2(624, 653)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallzone"]
+position = Vector2(442, 942)
+shape = SubResource("RectangleShape2D_rpd6w")
+
+[node name="tolevel2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tolevel2"]
+position = Vector2(2458, 494)
+shape = SubResource("RectangleShape2D_evdkk")
+
+[connection signal="body_entered" from="fallzone" to="Daikon" method="_on_fallzone_body_entered"]
+[connection signal="body_entered" from="tolevel2" to="Daikon" method="_on_tolevel_2_body_entered"]
