@@ -23,3 +23,6 @@ func _on_old_daikon_body_exited(body):
 func _on_old_daikon_body_entered(body):
 	if body.name == "Daikon":
 		$OldDaikon/Hint.visible = true
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://puzzle_1.tscn")
