@@ -25,3 +25,4 @@ func _on_old_daikon_body_entered(body):
 		$OldDaikon/Hint.visible = true
 
 
+

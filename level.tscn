@@ -81,19 +81,16 @@ theme_override_fonts/font = ExtResource("9_f0tvx")
 theme_override_font_sizes/font_size = 50
 text = "Get to da spaceship!!!"
 
-<<<<<<< HEAD
-[node name="Button" type="Button" parent="."]
-offset_left = 1457.0
-offset_top = 1027.0
-offset_right = 1592.0
-offset_bottom = 1132.0
+[node name="button_scene_change" type="Button" parent="."]
+offset_left = 1602.0
+offset_top = 1102.0
+offset_right = 1798.0
+offset_bottom = 1207.0
 text = "CLICK FOR FIRST PUZZLE"
 
-=======
->>>>>>> 28261e7504abc78fc6d7801e59b8150826492ea4
-[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
 [connection signal="body_entered" from="Fallzone" to="Daikon" method="_on_fallzone_body_entered"]
 [connection signal="body_entered" from="OldDaikon" to="." method="_on_old_daikon_body_entered"]
 [connection signal="body_exited" from="OldDaikon" to="." method="_on_old_daikon_body_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="button_scene_change" to="." method="_on_button_pressed"]
