@@ -20,12 +20,12 @@ func _process(delta):
 
 func _on_start_pressed():
 	button.play()
-	scene = 'level.tscn'
+	scene = 'res://level.tscn'
 
 
 func _on_credits_pressed():
 	button.play()
-	scene = 'credits.tscn'
+	scene = 'res://credits.tscn'
 
 
 func _on_quit_pressed():
@@ -37,4 +37,5 @@ func _on_audio_stream_player_finished():
 
 
 func _on_button_finished():
-	tree.change_scene_to_file(scene)
+	if scene != '':
+		tree.change_scene_to_file(scene)
