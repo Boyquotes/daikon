@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://bdfhuy12261hi"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 [ext_resource type="PackedScene" uid="uid://rovodlllofco" path="res://button/button.tscn" id="6_ucidy"]
 [ext_resource type="PackedScene" uid="uid://bmfa8k2i8j4j" path="res://scene_two/blueberry/blueberry.tscn" id="7_c04y8"]
-[ext_resource type="PackedScene" uid="uid://fuo6s8uiap4a" path="res://OldDaikon.tscn" id="8_6ppig"]
+[ext_resource type="PackedScene" uid="uid://fuo6s8uiap4a" path="res://Mechanic.tscn" id="8_6ppig"]
 [ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="9_f0tvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
@@ -68,10 +68,10 @@ position = Vector2(970, 1237)
 [node name="blueberry" parent="." instance=ExtResource("7_c04y8")]
 position = Vector2(635, 1242)
 
-[node name="OldDaikon" parent="." instance=ExtResource("8_6ppig")]
+[node name="Mechanic" parent="." instance=ExtResource("8_6ppig")]
 position = Vector2(407, 1167)
 
-[node name="Hint" type="Label" parent="OldDaikon"]
+[node name="Hint" type="Label" parent="Mechanic"]
 offset_left = 56.0
 offset_top = -95.0
 offset_right = 477.0
@@ -91,6 +91,6 @@ text = "CLICK FOR FIRST PUZZLE"
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
 [connection signal="body_entered" from="Fallzone" to="Daikon" method="_on_fallzone_body_entered"]
-[connection signal="body_entered" from="OldDaikon" to="." method="_on_old_daikon_body_entered"]
-[connection signal="body_exited" from="OldDaikon" to="." method="_on_old_daikon_body_exited"]
+[connection signal="body_entered" from="Mechanic" to="." method="_on_old_daikon_body_entered"]
+[connection signal="body_exited" from="Mechanic" to="." method="_on_old_daikon_body_exited"]
 [connection signal="pressed" from="button_scene_change" to="." method="_on_button_pressed"]
