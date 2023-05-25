@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://br2a5pg75tgi6"]
 
-[ext_resource type="Texture2D" uid="uid://dhwt1f0haeh2k" path="res://scene_one/applebetter.png" id="1_15fjv"]
+[ext_resource type="Texture2D" uid="uid://bm2rja1sxrgs0" path="res://scene_one/cookie.png" id="1_vrxyp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l11fk"]
 radius = 71.007
@@ -12,6 +12,6 @@ position = Vector2(72, 68)
 shape = SubResource("CircleShape2D_l11fk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(72, 65)
-scale = Vector2(0.115385, 0.104184)
-texture = ExtResource("1_15fjv")
+position = Vector2(70.1154, 69.8322)
+scale = Vector2(0.272987, 0.262374)
+texture = ExtResource("1_vrxyp")

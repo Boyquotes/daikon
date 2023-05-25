@@ -70,3 +70,9 @@ func _on_fallzone_two_body_entered(body):
 	if body.name == 'Daikon':
 		get_tree().change_scene_to_file('res://scene_two/puzzle_2.tscn') # Replace with function body.
 
+ # Replace with function body.
+
+
+func _on_fallzone_1_body_entered(body):
+	if body.name == 'Daikon':
+		get_tree().change_scene_to_file('res://scene_one/puzzle_1.tscn')	
