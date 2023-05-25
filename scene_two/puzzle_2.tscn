@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cx8s78xm8j2ak"]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="Texture2D" uid="uid://db5mvv22lo6rm" path="res://bg/scene2.png" id="1_rbgle"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="2_4u84e"]
 [ext_resource type="Texture2D" uid="uid://dkojvm8bvnd1a" path="res://puzzletools/teeter.png" id="2_linl3"]
 [ext_resource type="Texture2D" uid="uid://dsku6kj1682if" path="res://bg/edit_bg.png" id="3_8h567"]
-[ext_resource type="PackedScene" uid="uid://bmfa8k2i8j4j" path="res://blueberry/blueberry.tscn" id="5_cvh3w"]
+[ext_resource type="PackedScene" uid="uid://bmfa8k2i8j4j" path="res://scene_two/blueberry/blueberry.tscn" id="5_cvh3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_747e7"]
 size = Vector2(395, 13)

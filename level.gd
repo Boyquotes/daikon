@@ -27,5 +27,5 @@ func _on_old_daikon_body_entered(body):
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://puzzle_1.tscn")
+	get_tree().change_scene_to_file("res://scene_one/puzzle_1.tscn")
 

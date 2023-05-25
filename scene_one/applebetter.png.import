@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhwt1f0haeh2k"
-path="res://.godot/imported/applebetter.png-b30bc7f7613988563998d4b606bf8781.ctex"
+path="res://.godot/imported/applebetter.png-e07d23bc51ecb9b21e7760ff9b5bd0b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://applebetter.png"
-dest_files=["res://.godot/imported/applebetter.png-b30bc7f7613988563998d4b606bf8781.ctex"]
+source_file="res://scene_one/applebetter.png"
+dest_files=["res://.godot/imported/applebetter.png-e07d23bc51ecb9b21e7760ff9b5bd0b0.ctex"]
 
 [params]
 

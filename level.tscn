@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bebsh6l0l3eph"]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://level.gd" id="1_1eiqh"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="1_q3dmt"]
 [ext_resource type="Texture2D" uid="uid://kuxotuh2gesv" path="res://assets/bg/bg1.jpeg" id="2_tojij"]
-[ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://banana/banana.tscn" id="3_85x0w"]
+[ext_resource type="PackedScene" uid="uid://dj240h7cckjy1" path="res://scene_one/banana/banana.tscn" id="3_85x0w"]
 [ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="3_h36wp"]
 [ext_resource type="PackedScene" uid="uid://rovodlllofco" path="res://button/button.tscn" id="6_ucidy"]
-[ext_resource type="PackedScene" uid="uid://bmfa8k2i8j4j" path="res://blueberry/blueberry.tscn" id="7_c04y8"]
-[ext_resource type="PackedScene" path="res://OldDaikon.tscn" id="8_6ppig"]
+[ext_resource type="PackedScene" uid="uid://bmfa8k2i8j4j" path="res://scene_two/blueberry/blueberry.tscn" id="7_c04y8"]
+[ext_resource type="PackedScene" uid="uid://fuo6s8uiap4a" path="res://OldDaikon.tscn" id="8_6ppig"]
 [ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="9_f0tvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8481"]
