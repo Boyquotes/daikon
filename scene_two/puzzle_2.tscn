@@ -25,7 +25,7 @@ size = Vector2(177.5, 20)
 size = Vector2(603, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpu2m"]
-size = Vector2(306, 23)
+size = Vector2(255, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6ocd"]
 size = Vector2(22, 271.375)
@@ -82,20 +82,20 @@ position = Vector2(1494.5, 673)
 shape = SubResource("RectangleShape2D_fqw82")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D6"]
-position = Vector2(-11.0001, -8.5)
-scale = Vector2(2.8794, 1.5)
+position = Vector2(3.49989, -8.5)
+scale = Vector2(3.02513, 1.5)
 texture = ExtResource("2_linl3")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1899, 501)
+position = Vector2(1924.5, 501)
 shape = SubResource("RectangleShape2D_qpu2m")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1757, 542.688)
+position = Vector2(1787, 540)
 shape = SubResource("RectangleShape2D_j6ocd")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D8"]
-position = Vector2(1, 0.3125)
+position = Vector2(0, 2)
 rotation = 1.5708
 scale = Vector2(1.35989, 1.33201)
 texture = ExtResource("2_linl3")
@@ -105,8 +105,9 @@ position = Vector2(1256.5, 570.25)
 shape = SubResource("RectangleShape2D_vsa1l")
 
 [node name="coverup" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(1637, 325)
-scale = Vector2(1, 12.5577)
+show_behind_parent = true
+position = Vector2(1629.25, 328)
+scale = Vector2(1.36215, 12.5577)
 texture = ExtResource("3_8h567")
 
 [node name="Daikon" parent="." instance=ExtResource("2_4u84e")]

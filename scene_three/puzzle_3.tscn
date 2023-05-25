@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dt2o5fn1emkx0"]
+[gd_scene load_steps=24 format=3 uid="uid://dt2o5fn1emkx0"]
 
 [ext_resource type="Script" path="res://scene_three/puzzle_3.gd" id="1_8ng7p"]
 [ext_resource type="Texture2D" uid="uid://d36r33nejk5pw" path="res://scene_three/scene3.png" id="1_43rwj"]
 [ext_resource type="Texture2D" uid="uid://dkojvm8bvnd1a" path="res://puzzletools/teeter.png" id="2_ny0lr"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="3_16xf0"]
 [ext_resource type="PackedScene" uid="uid://br2a5pg75tgi6" path="res://scene_one/apple.tscn" id="5_yxsm6"]
+[ext_resource type="Texture2D" uid="uid://bo8th5vgdbcp8" path="res://bg/coverup.png" id="6_quatv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxiyo"]
 size = Vector2(360, 26.5)
@@ -25,7 +26,7 @@ size = Vector2(404, 22.5)
 size = Vector2(234.5, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at2it"]
-size = Vector2(21.25, 273)
+size = Vector2(21.25, 275)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lt333"]
 size = Vector2(425.5, 26.5)
@@ -53,6 +54,9 @@ radius = 18.9737
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoema"]
 size = Vector2(128.804, 25.619)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dv4t"]
+size = Vector2(169, 25)
 
 [node name="puzzle_3" type="Node2D"]
 script = ExtResource("1_8ng7p")
@@ -84,17 +88,17 @@ position = Vector2(1672, 1284.75)
 shape = SubResource("RectangleShape2D_ttrxy")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1974, 1072)
+position = Vector2(1971, 1073)
 shape = SubResource("RectangleShape2D_7p8bj")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1862.62, 1144.5)
+position = Vector2(1862.62, 1143.5)
 shape = SubResource("RectangleShape2D_at2it")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D7"]
-position = Vector2(-0.302768, 8.47922)
+position = Vector2(2.38002, 7.57961)
 rotation = 1.5708
-scale = Vector2(1.43826, 1.46316)
+scale = Vector2(1.46761, 1.46316)
 texture = ExtResource("2_ny0lr")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
@@ -178,5 +182,21 @@ offset_right = 1689.0
 offset_bottom = 1390.0
 text = "MY COOKIE 
 IS STUCK! RESTART"
+
+[node name="coverup" type="Sprite2D" parent="."]
+position = Vector2(1437, 1034)
+scale = Vector2(0.860987, 0.966887)
+texture = ExtResource("6_quatv")
+
+[node name="anotherplatform" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="anotherplatform"]
+position = Vector2(1282.5, 1101)
+shape = SubResource("RectangleShape2D_5dv4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="anotherplatform"]
+position = Vector2(1282, 1096)
+scale = Vector2(0.894473, 1.17647)
+texture = ExtResource("2_ny0lr")
 
 [connection signal="pressed" from="cookiestuck" to="." method="_on_cookiestuck_pressed"]

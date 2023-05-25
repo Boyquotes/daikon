@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://jqur5lciki40"]
+[gd_scene load_steps=18 format=3 uid="uid://jqur5lciki40"]
 
 [ext_resource type="Texture2D" uid="uid://cinry1662m7rt" path="res://bg/scene1.png" id="1_0tva1"]
 [ext_resource type="PackedScene" uid="uid://dbsupiohteod" path="res://scene_one/puzzle1_teeter.tscn" id="2_vr7po"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="3_8tqn6"]
 [ext_resource type="PackedScene" uid="uid://br2a5pg75tgi6" path="res://scene_one/apple.tscn" id="5_ssm52"]
+[ext_resource type="Texture2D" uid="uid://dkojvm8bvnd1a" path="res://puzzletools/teeter.png" id="5_uippy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3518"]
 size = Vector2(540, 20)
@@ -36,6 +37,9 @@ size = Vector2(835, 420)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioer8"]
 size = Vector2(339, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea6lw"]
+size = Vector2(21, 150.25)
 
 [node name="puzzle_1" type="Node2D"]
 
@@ -113,6 +117,18 @@ shape = SubResource("RectangleShape2D_evdkk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(1119.5, 826.5)
 shape = SubResource("RectangleShape2D_ioer8")
+
+[node name="block" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="block"]
+position = Vector2(1210.5, 1244)
+shape = SubResource("RectangleShape2D_ea6lw")
+
+[node name="Sprite2D" type="Sprite2D" parent="block"]
+position = Vector2(1207.82, 1230.45)
+rotation = 1.5708
+scale = Vector2(0.631573, 1.54878)
+texture = ExtResource("5_uippy")
 
 [connection signal="body_entered" from="fallzone_1" to="Daikon" method="_on_fallzone_1_body_entered"]
 [connection signal="body_entered" from="tolevel2" to="Daikon" method="_on_tolevel_2_body_entered"]
