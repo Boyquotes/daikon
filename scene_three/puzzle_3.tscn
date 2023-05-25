@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://dt2o5fn1emkx0"]
+[gd_scene load_steps=22 format=3 uid="uid://dt2o5fn1emkx0"]
 
+[ext_resource type="Script" path="res://scene_three/puzzle_3.gd" id="1_8ng7p"]
 [ext_resource type="Texture2D" uid="uid://d36r33nejk5pw" path="res://scene_three/scene3.png" id="1_43rwj"]
 [ext_resource type="Texture2D" uid="uid://dkojvm8bvnd1a" path="res://puzzletools/teeter.png" id="2_ny0lr"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="3_16xf0"]
@@ -9,7 +10,7 @@
 size = Vector2(360, 26.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm3we"]
-size = Vector2(265.75, 22.5)
+size = Vector2(265.75, 45.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wdxx"]
 size = Vector2(270, 20.25)
@@ -54,6 +55,7 @@ radius = 18.9737
 size = Vector2(128.804, 25.619)
 
 [node name="puzzle_3" type="Node2D"]
+script = ExtResource("1_8ng7p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1034, 776)
@@ -66,7 +68,7 @@ position = Vector2(496, 1200.75)
 shape = SubResource("RectangleShape2D_mxiyo")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(816.125, 1097.75)
+position = Vector2(816.125, 1109.25)
 shape = SubResource("RectangleShape2D_nm3we")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
@@ -135,13 +137,16 @@ position = Vector2(1054, 1817)
 shape = SubResource("RectangleShape2D_rap8u")
 
 [node name="teeter_2" type="RigidBody2D" parent="."]
+freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teeter_2"]
 position = Vector2(1142, 1391)
+rotation = 0.523599
 shape = SubResource("RectangleShape2D_k7qi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="teeter_2"]
 position = Vector2(1144, 1390)
+rotation = 0.523599
 scale = Vector2(2.84296, 1.47059)
 texture = ExtResource("2_ny0lr")
 
@@ -164,3 +169,14 @@ position = Vector2(520.391, 1485.6)
 rotation = 0.804597
 scale = Vector2(0.647583, 1.73305)
 texture = ExtResource("2_ny0lr")
+
+[node name="cookiestuck" type="Button" parent="."]
+light_mask = 518
+offset_left = 1516.0
+offset_top = 1311.0
+offset_right = 1689.0
+offset_bottom = 1390.0
+text = "MY COOKIE 
+IS STUCK! RESTART"
+
+[connection signal="pressed" from="cookiestuck" to="." method="_on_cookiestuck_pressed"]

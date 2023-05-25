@@ -114,4 +114,5 @@ shape = SubResource("RectangleShape2D_evdkk")
 position = Vector2(1119.5, 826.5)
 shape = SubResource("RectangleShape2D_ioer8")
 
+[connection signal="body_entered" from="fallzone_1" to="Daikon" method="_on_fallzone_1_body_entered"]
 [connection signal="body_entered" from="tolevel2" to="Daikon" method="_on_tolevel_2_body_entered"]
