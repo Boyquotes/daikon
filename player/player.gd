@@ -76,3 +76,8 @@ func _on_fallzone_two_body_entered(body):
 func _on_fallzone_1_body_entered(body):
 	if body.name == 'Daikon':
 		get_tree().change_scene_to_file('res://scene_one/puzzle_1.tscn')	
+
+
+func _on_tolevel_3_body_entered(body):
+	if body.name == 'Daikon':
+		get_tree().change_scene_to_file('res://scene_three/puzzle_3.tscn')

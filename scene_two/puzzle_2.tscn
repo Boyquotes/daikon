@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckt5g3ui2xa67"]
+[gd_scene load_steps=18 format=3 uid="uid://ckt5g3ui2xa67"]
 
 [ext_resource type="Texture2D" uid="uid://db5mvv22lo6rm" path="res://bg/scene2.png" id="1_rbgle"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="2_4u84e"]
@@ -35,6 +35,12 @@ size = Vector2(101, 23.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eehxb"]
 size = Vector2(2560, 677)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ntfu"]
+size = Vector2(428, 370)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jooyh"]
+size = Vector2(20.5, 118)
 
 [node name="puzzle_2" type="Node2D"]
 
@@ -138,4 +144,24 @@ metadata/_edit_group_ = true
 position = Vector2(1146, 176.5)
 shape = SubResource("RectangleShape2D_eehxb")
 
+[node name="tolevel3" type="Area2D" parent="."]
+position = Vector2(306, 735)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tolevel3"]
+position = Vector2(1955, -321)
+shape = SubResource("RectangleShape2D_7ntfu")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1319.75, 624)
+shape = SubResource("RectangleShape2D_jooyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(1320, 624.097)
+rotation = 1.5708
+scale = Vector2(0.606501, 1.30882)
+texture = ExtResource("2_linl3")
+
 [connection signal="body_entered" from="Fallzone_two" to="Daikon" method="_on_fallzone_two_body_entered"]
+[connection signal="body_entered" from="tolevel3" to="Daikon" method="_on_tolevel_3_body_entered"]
