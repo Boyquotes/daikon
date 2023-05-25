@@ -64,3 +64,9 @@ func check_rigidbody_collision(body):
 func _on_tolevel_2_body_entered(body):
 	if body.name == 'Daikon':
 		get_tree().change_scene_to_file('res://puzzle_2.tscn') # Replace with function body.
+
+
+func _on_fallzone_two_body_entered(body):
+	if body.name == 'Daikon':
+		get_tree().change_scene_to_file('res://puzzle_2.tscn') # Replace with function body.
+

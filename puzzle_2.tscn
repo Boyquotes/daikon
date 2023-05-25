@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cx8s78xm8j2ak"]
+[gd_scene load_steps=16 format=3 uid="uid://cx8s78xm8j2ak"]
 
 [ext_resource type="Texture2D" uid="uid://db5mvv22lo6rm" path="res://bg/scene2.png" id="1_rbgle"]
 [ext_resource type="PackedScene" uid="uid://c41lanen2wit5" path="res://player/player.tscn" id="2_4u84e"]
@@ -32,6 +32,9 @@ size = Vector2(22, 271.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsa1l"]
 size = Vector2(101, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eehxb"]
+size = Vector2(2560, 677)
 
 [node name="puzzle_2" type="Node2D"]
 
@@ -126,3 +129,13 @@ position = Vector2(1079, 336)
 
 [node name="blueberry8" parent="." instance=ExtResource("5_cvh3w")]
 position = Vector2(991, 338)
+
+[node name="Fallzone_two" type="Area2D" parent="."]
+position = Vector2(-116, 1311)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fallzone_two"]
+position = Vector2(1146, 176.5)
+shape = SubResource("RectangleShape2D_eehxb")
+
+[connection signal="body_entered" from="Fallzone_two" to="Daikon" method="_on_fallzone_two_body_entered"]
