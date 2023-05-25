@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dt2o5fn1emkx0"]
+[gd_scene load_steps=23 format=3 uid="uid://dt2o5fn1emkx0"]
 
 [ext_resource type="Script" path="res://scene_three/puzzle_3.gd" id="1_8ng7p"]
 [ext_resource type="Texture2D" uid="uid://d36r33nejk5pw" path="res://scene_three/scene3.png" id="1_43rwj"]
@@ -15,9 +15,6 @@ size = Vector2(265.75, 45.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wdxx"]
 size = Vector2(270, 20.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbjfr"]
-size = Vector2(245.75, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttrxy"]
 size = Vector2(404, 22.5)
@@ -65,6 +62,10 @@ script = ExtResource("1_8ng7p")
 position = Vector2(1034, 776)
 texture = ExtResource("1_43rwj")
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(437, 242)
+texture = ExtResource("6_quatv")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -78,10 +79,6 @@ shape = SubResource("RectangleShape2D_nm3we")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1100, 1001.88)
 shape = SubResource("RectangleShape2D_5wdxx")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1369.12, 1082)
-shape = SubResource("RectangleShape2D_nbjfr")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1672, 1284.75)
@@ -183,11 +180,6 @@ offset_bottom = 1390.0
 text = "MY COOKIE 
 IS STUCK! RESTART"
 
-[node name="coverup" type="Sprite2D" parent="."]
-position = Vector2(1437, 1034)
-scale = Vector2(0.860987, 0.966887)
-texture = ExtResource("6_quatv")
-
 [node name="anotherplatform" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="anotherplatform"]
@@ -195,6 +187,7 @@ position = Vector2(1282.5, 1101)
 shape = SubResource("RectangleShape2D_5dv4t")
 
 [node name="Sprite2D" type="Sprite2D" parent="anotherplatform"]
+top_level = true
 position = Vector2(1282, 1096)
 scale = Vector2(0.894473, 1.17647)
 texture = ExtResource("2_ny0lr")
