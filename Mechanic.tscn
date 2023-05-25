@@ -1,17 +1,141 @@
-[gd_scene load_steps=3 format=3 uid="uid://fuo6s8uiap4a"]
+[gd_scene load_steps=11 format=3 uid="uid://fuo6s8uiap4a"]
 
-[ext_resource type="Texture2D" uid="uid://banqtej88s5jr" path="res://assets/mechanic_1.png" id="1_21poc"]
+[ext_resource type="Texture2D" uid="uid://banqtej88s5jr" path="res://assets/mechanic/mechanic_1.png" id="1_5xir8"]
+[ext_resource type="Texture2D" uid="uid://r5tt0l6klkos" path="res://assets/mechanic/mechanic_2.png" id="2_j7glp"]
+[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="3_m3ufy"]
+
+[sub_resource type="GDScript" id="GDScript_hi0o3"]
+script/source = "extends CharacterBody2D
+
+
+@onready var anim = get_node('Animation Player')
+@onready var hint = get_node('Hint')
+
+
+func _ready():
+	get_node('Animation Sprite').flip_h = true
+	print(111)
+	hint.visible = false
+
+
+func _process(delta):
+	anim.play('Idle')
+
+
+func _on_player_detection_body_entered(body):
+	if body.name == 'Daikon':
+		hint.visible = true
+
+
+func _on_player_detection_body_exited(body):
+	if body.name == 'Daikon':
+		hint.visible = false
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krtjr"]
-radius = 106.0
+radius = 50.0
 height = 234.0
 
-[node name="OldDaikon" type="Area2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxukr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5xir8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j7glp")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.12321, 0.12321)
-texture = ExtResource("1_21poc")
+[sub_resource type="Animation" id="Animation_swveh"]
+resource_name = "Idle"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[sub_resource type="Animation" id="Animation_o3npy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xr74j"]
+_data = {
+"Idle": SubResource("Animation_swveh"),
+"RESET": SubResource("Animation_o3npy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfhnm"]
+size = Vector2(150, 267)
+
+[node name="Mechanic" type="CharacterBody2D"]
+script = SubResource("GDScript_hi0o3")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(5, -1)
 shape = SubResource("CapsuleShape2D_krtjr")
+
+[node name="Animation Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.123, 0.123)
+sprite_frames = SubResource("SpriteFrames_fxukr")
+animation = &"Idle"
+
+[node name="Animation Player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Animation Sprite")
+libraries = {
+"": SubResource("AnimationLibrary_xr74j")
+}
+
+[node name="Player Detection" type="Area2D" parent="."]
+
+[node name="Player Detection Collision" type="CollisionShape2D" parent="Player Detection"]
+position = Vector2(4, -18.5)
+shape = SubResource("RectangleShape2D_rfhnm")
+
+[node name="Hint" type="Label" parent="."]
+visible = false
+offset_left = 56.0
+offset_top = -95.0
+offset_right = 477.0
+offset_bottom = -19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_m3ufy")
+theme_override_font_sizes/font_size = 50
+text = "Get to da spaceship!!!"
+
+[connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
