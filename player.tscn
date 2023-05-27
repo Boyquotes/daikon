@@ -1,0 +1,364 @@
+[gd_scene load_steps=17 format=3 uid="uid://dw0j7f8ahtsuk"]
+
+[ext_resource type="Texture2D" uid="uid://dmyy3hniip87i" path="res://assets/daikon/idle/idle1.png" id="1_fcj0l"]
+[ext_resource type="Texture2D" uid="uid://cmwhsna1lqk47" path="res://assets/daikon/jump/jump2.png" id="1_jwkjm"]
+[ext_resource type="Texture2D" uid="uid://ii5wvxye3bj5" path="res://assets/daikon/idle/idle2.png" id="2_ltiqu"]
+[ext_resource type="Texture2D" uid="uid://c7as53w7s3q8o" path="res://assets/daikon/jump/jump1.png" id="4_wmwix"]
+[ext_resource type="Texture2D" uid="uid://pf51odaobxdx" path="res://assets/daikon/run/run1.png" id="5_1qw45"]
+[ext_resource type="Texture2D" uid="uid://melgjue81m61" path="res://assets/daikon/run/run2.png" id="6_i0ead"]
+[ext_resource type="Texture2D" uid="uid://bqjed82k18xaf" path="res://assets/daikon/run/run3.png" id="7_60jdm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q3ltp"]
+friction = 0.0
+
+[sub_resource type="GDScript" id="GDScript_qccbp"]
+script/source = "class_name Player extends RigidBody2D
+
+
+const WALK_MAX_VELOCITY = 400.0
+const AIR_ACCEL = 100.0
+const AIR_DEACCEL = 10000000.0
+const JUMP_VELOCITY = 1000.0
+const STOP_JUMP_FORCE = 450.0
+const MAX_SHOOT_POSE_TIME = 0.3
+const MAX_FLOOR_AIRBORNE_TIME = 0.15
+
+var anim := ''
+var siding_left := false
+var jumping := false
+var stopping_jump := false
+
+var floor_h_velocity: float = 0.0
+
+var airborne_time: float = 1e20
+
+@onready var sprite := get_node('Sprites')
+@onready var animation_player := get_node('Animation')
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	var velocity := state.get_linear_velocity()
+	var step := state.get_step()
+
+	var new_anim := anim
+	var new_siding_left := siding_left
+
+	# Get player input.
+	var move_left := Input.is_action_pressed(&'left')
+	var move_right := Input.is_action_pressed(&'right')
+	var jump := Input.is_action_pressed(&'jump')
+
+	# Deapply prev floor velocity.
+	velocity.x -= floor_h_velocity
+	floor_h_velocity = 0.0
+
+	# Find the floor (a contact with upwards facing collision normal).
+	var found_floor := false
+	var floor_index := -1
+
+	for contact_index in state.get_contact_count():
+		var collision_normal = state.get_contact_local_normal(contact_index) 
+
+		if collision_normal.dot(Vector2(0, -1)) > 0.6:
+			found_floor = true
+			floor_index = contact_index
+
+	# A good idea when implementing characters of all kinds,
+	# compensates for physics imprecision, as well as human reaction delay.
+	if found_floor:
+		airborne_time = 0.0
+	else:
+		airborne_time += step # Time it spent in the air.
+
+	var on_floor := airborne_time < MAX_FLOOR_AIRBORNE_TIME
+
+	# Process jump.
+	if jumping:
+		if velocity.y > 0:
+			# Set off the jumping flag if going down.
+			jumping = false
+		elif not jump:
+			stopping_jump = true
+
+		if stopping_jump:
+			velocity.y += STOP_JUMP_FORCE * step
+
+	if on_floor:
+		# Process logic when character is on floor.
+		if move_left and not move_right:
+			velocity.x = -WALK_MAX_VELOCITY
+		elif move_right and not move_left:
+			velocity.x = WALK_MAX_VELOCITY
+		else:
+			velocity.x = 0
+
+		# Check jump.
+		if not jumping and jump:
+			velocity.y = -JUMP_VELOCITY
+			jumping = true
+			stopping_jump = false
+
+		# Check siding.
+		if velocity.x < 0 and move_left:
+			new_siding_left = true
+		elif velocity.x > 0 and move_right:
+			new_siding_left = false
+		
+		if jumping:
+			new_anim = 'Jump'
+		elif velocity.x == 0:
+			new_anim = 'Idle'
+		else:
+			new_anim = 'Run'
+	else:
+		# Process logic when the character is in the air.
+		if move_left and not move_right:
+			if velocity.x > -WALK_MAX_VELOCITY:
+				velocity.x -= AIR_ACCEL * step
+		elif move_right and not move_left:
+			if velocity.x < WALK_MAX_VELOCITY:
+				velocity.x += AIR_ACCEL * step
+		else:
+			var xv := absf(velocity.x)
+			xv -= AIR_DEACCEL * step
+
+			if xv < 0:
+				xv = 0
+			velocity.x = signf(velocity.x) * xv
+		new_anim = 'Jump' if velocity.y < 0 else 'Fall'
+
+	# Update siding.
+	if new_siding_left != siding_left:
+		sprite.flip_h = new_siding_left
+		siding_left = new_siding_left
+
+	# Change animation.
+	if new_anim != anim:
+		anim = new_anim
+		animation_player.play(anim)
+
+	# Apply floor velocity.
+	if found_floor:
+		floor_h_velocity = state.get_contact_collider_velocity_at_position(floor_index).x
+		velocity.x += floor_h_velocity
+
+	# Finally, apply gravity and set back the linear velocity.
+	velocity += state.get_total_gravity() * step
+	state.set_linear_velocity(velocity)
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0q42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jwkjm")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fcj0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ltiqu")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wmwix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jwkjm")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1qw45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i0ead")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_60jdm")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_2l1sx"]
+resource_name = "Fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_jw4vb"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_eqftn"]
+resource_name = "Jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_vr3pc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_yffjl"]
+resource_name = "Run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.371013),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2u7u"]
+_data = {
+"Fall": SubResource("Animation_2l1sx"),
+"Idle": SubResource("Animation_jw4vb"),
+"Jump": SubResource("Animation_eqftn"),
+"RESET": SubResource("Animation_vr3pc"),
+"Run": SubResource("Animation_yffjl")
+}
+
+[node name="Player" type="RigidBody2D"]
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_q3ltp")
+max_contacts_reported = 8
+contact_monitor = true
+lock_rotation = true
+script = SubResource("GDScript_qccbp")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 2048
+limit_bottom = 1440
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.123, 0.123)
+sprite_frames = SubResource("SpriteFrames_r0q42")
+animation = &"Jump"
+frame = 1
+metadata/_edit_lock_ = true
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprites")
+libraries = {
+"": SubResource("AnimationLibrary_c2u7u")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(2.46, 2.46)
+polygon = PackedVector2Array(4, -21, -5, -20, -11, -17, -16, -9, -18, 1, -19, 15, -18, 25, -15, 30, -11, 33, -6, 35, -3, 40, 5, 41, 18, 31, 23, 18, 22, 3, 20, -9, 18, -15, 12, -19)

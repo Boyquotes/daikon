@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ccxxjd7a561ol"]
+
+[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="1_dpy06"]
+
+[resource]
+default_font = ExtResource("1_dpy06")
+default_font_size = 240

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xtphl6se8qdp"
-path="res://.godot/imported/Background.jpeg-487214de8e29320d583b8fcbfb7c5703.ctex"
+uid="uid://ipldnqfhn8di"
+path="res://.godot/imported/blueberry.png-d5e6678f86be99b2784eb246538529c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bg/Background.jpeg"
-dest_files=["res://.godot/imported/Background.jpeg-487214de8e29320d583b8fcbfb7c5703.ctex"]
+source_file="res://assets/objects/blueberry.png"
+dest_files=["res://.godot/imported/blueberry.png-d5e6678f86be99b2784eb246538529c3.ctex"]
 
 [params]
 
