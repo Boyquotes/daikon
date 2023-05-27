@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0l7pupe38tdo"]
+
+[ext_resource type="PackedScene" uid="uid://c0xvo8vrljipg" path="res://bg.tscn" id="1_lgqd5"]
+[ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_04q6w"]
+
+[sub_resource type="GDScript" id="GDScript_dneka"]
+script/source = "extends Node2D
+
+
+@onready var tree = get_tree()
+
+
+func _on_start_pressed():
+	tree.change_scene_to_file('res://levels/level_1.tscn')
+
+
+func _on_quit_pressed():
+	tree.quit()
+"
+
+[node name="Main" type="Node2D"]
+position = Vector2(1440, 900)
+script = SubResource("GDScript_dneka")
+
+[node name="Bg" parent="." instance=ExtResource("1_lgqd5")]
+offset = Vector2(720, 450)
+transform = Transform2D(1, 0, 0, 1, 720, 450)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -704.0
+offset_right = 352.0
+offset_bottom = -352.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_04q6w")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 25
+theme_override_constants/outline_size = 50
+theme_override_constants/shadow_outline_size = 50
+text = "Daikon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button List" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_top = -225.0
+offset_right = 450.0
+offset_bottom = 332.0
+grow_horizontal = 2
+theme = ExtResource("2_04q6w")
+
+[node name="Start" type="Button" parent="Button List"]
+layout_mode = 2
+theme = ExtResource("2_04q6w")
+theme_override_font_sizes/font_size = 120
+text = "Start"
+
+[node name="Credits" type="Button" parent="Button List"]
+layout_mode = 2
+theme = ExtResource("2_04q6w")
+theme_override_font_sizes/font_size = 120
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Button List"]
+layout_mode = 2
+theme = ExtResource("2_04q6w")
+theme_override_font_sizes/font_size = 120
+text = "Quit"
+
+[connection signal="pressed" from="Button List/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button List/Quit" to="." method="_on_quit_pressed"]

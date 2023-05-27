@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://boelrqhen7t2i"]
+
+[ext_resource type="Texture2D" uid="uid://bvvvjlcl504qe" path="res://assets/objects/scale.png" id="1_7xjp6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rlhxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k3av"]
+size = Vector2(528, 46)
+
+[node name="scale" type="Node2D"]
+
+[node name="Fulcrum" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Fulcrum Collision" type="CollisionShape2D" parent="Fulcrum"]
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CircleShape2D_rlhxt")
+
+[node name="Plank" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="Plank Collision" type="CollisionShape2D" parent="Plank"]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_7k3av")
+
+[node name="Scale" type="Sprite2D" parent="Plank/Plank Collision"]
+position = Vector2(-7.62939e-06, -1)
+scale = Vector2(2.65327, 2.82353)
+texture = ExtResource("1_7xjp6")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../Fulcrum")
+node_b = NodePath("../Plank")

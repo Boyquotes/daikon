@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5u5ffkmknhpw"]
+
+[ext_resource type="Texture2D" uid="uid://ipldnqfhn8di" path="res://assets/objects/blueberry.png" id="1_fkyif"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35q28"]
+radius = 75.2396
+
+[node name="blueberry" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fkyif")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_35q28")
