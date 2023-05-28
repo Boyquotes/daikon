@@ -93,7 +93,7 @@ shape = SubResource("RectangleShape2D_au6kf")
 position = Vector2(1005, 1129)
 
 [node name="Blueberry" parent="." instance=ExtResource("4_xyrtp")]
-position = Vector2(440, 1188)
+position = Vector2(1164, 1020)
 
 [node name="Blueberry 2" parent="." instance=ExtResource("4_xyrtp")]
 position = Vector2(841, 1042)

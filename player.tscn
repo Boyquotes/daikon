@@ -16,6 +16,8 @@ script/source = "class_name Player extends RigidBody2D
 
 
 const WALK_MAX_VELOCITY = 400.0
+const SPRINT_COEF = 3.0
+const SPRINT_COOLDOWN = 2.0
 const AIR_ACCEL = 100.0
 const AIR_DEACCEL = 10000000.0
 const JUMP_VELOCITY = 1000.0
@@ -31,9 +33,25 @@ var stopping_jump := false
 var floor_h_velocity: float = 0.0
 
 var airborne_time: float = 1e20
+var sprint_time: float = 0
 
 @onready var sprite := get_node('Sprites')
 @onready var animation_player := get_node('Animation')
+
+
+func _can_sprint(vx: float, delta: float) -> bool:
+	var sprint := Input.is_action_pressed(&'sprint')
+
+	if 0 < sprint_time and sprint_time < SPRINT_COOLDOWN:
+		sprint_time += delta
+	elif sprint_time > SPRINT_COOLDOWN:
+		sprint_time = 0
+
+	if sprint and absf(vx) > WALK_MAX_VELOCITY / 1.5 and sprint_time < SPRINT_COOLDOWN / 4:
+		sprint_time += delta
+		return true
+	return false
+
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var velocity := state.get_linear_velocity()
@@ -46,6 +64,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var move_left := Input.is_action_pressed(&'left')
 	var move_right := Input.is_action_pressed(&'right')
 	var jump := Input.is_action_pressed(&'jump')
+	var sprint = _can_sprint(velocity.x, step)
 
 	# Deapply prev floor velocity.
 	velocity.x -= floor_h_velocity
@@ -85,9 +104,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if on_floor:
 		# Process logic when character is on floor.
 		if move_left and not move_right:
-			velocity.x = -WALK_MAX_VELOCITY
+			velocity.x = -WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
 		elif move_right and not move_left:
-			velocity.x = WALK_MAX_VELOCITY
+			velocity.x = WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
 		else:
 			velocity.x = 0
 
