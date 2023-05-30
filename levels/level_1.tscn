@@ -63,7 +63,7 @@ position = Vector2(1024, 768)
 texture = ExtResource("1_d2743")
 
 [node name="Player" parent="." instance=ExtResource("2_oh5j1")]
-position = Vector2(247, 441)
+position = Vector2(270, 1170)
 
 [node name="Shelves" type="StaticBody2D" parent="."]
 collision_layer = 2

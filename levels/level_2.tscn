@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdyyw1icp3vcr"]
+[gd_scene load_steps=7 format=3 uid="uid://bdyyw1icp3vcr"]
 
 [ext_resource type="PackedScene" uid="uid://dw0j7f8ahtsuk" path="res://player.tscn" id="1_gglu5"]
 [ext_resource type="PackedScene" uid="uid://bbijw8civ21j0" path="res://objects/cart.tscn" id="2_b7nso"]
+[ext_resource type="PackedScene" uid="uid://c5u5ffkmknhpw" path="res://objects/blueberry.tscn" id="3_x7p28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ensoy"]
 size = Vector2(8600.75, 853)
@@ -54,6 +55,9 @@ position = Vector2(105, 309)
 [node name="Camera" parent="Player" index="0"]
 limit_right = 8192
 limit_bottom = 2880
+
+[node name="blueberry" parent="." instance=ExtResource("3_x7p28")]
+position = Vector2(1279, 1041)
 
 [node name="cart" parent="." instance=ExtResource("2_b7nso")]
 position = Vector2(1104, 1073)
