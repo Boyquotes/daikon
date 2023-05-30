@@ -44,7 +44,7 @@ size = Vector2(340, 22)
 size = Vector2(401, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muqtt"]
-size = Vector2(2133, 466)
+size = Vector2(2614, 466)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oar3w"]
 size = Vector2(545, 2224)
@@ -53,7 +53,7 @@ size = Vector2(545, 2224)
 size = Vector2(545, 1088)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jdje"]
-size = Vector2(845, 676)
+size = Vector2(845, 649)
 
 [node name="Level 1" type="Node2D"]
 script = SubResource("GDScript_x2ql8")
@@ -109,21 +109,21 @@ position = Vector2(841, 1042)
 [node name="Fallzone" type="Area2D" parent="."]
 
 [node name="Fallzone 1" type="CollisionShape2D" parent="Fallzone"]
-position = Vector2(1020, 1546)
+position = Vector2(1045, 1546)
 shape = SubResource("RectangleShape2D_muqtt")
 
 [node name="Fallzone 2" type="CollisionShape2D" parent="Fallzone"]
-position = Vector2(-302.5, 654)
+position = Vector2(-494, 654)
 shape = SubResource("RectangleShape2D_oar3w")
 
 [node name="Fallzone 3" type="CollisionShape2D" parent="Fallzone"]
-position = Vector2(2335, 1141)
+position = Vector2(2529, 1115)
 shape = SubResource("RectangleShape2D_nstkn")
 
 [node name="Next" type="Area2D" parent="."]
 
 [node name="Next Level Collision" type="CollisionShape2D" parent="Next"]
-position = Vector2(2477, 254)
+position = Vector2(2477, 240.5)
 shape = SubResource("RectangleShape2D_3jdje")
 
 [connection signal="body_entered" from="Fallzone" to="." method="_on_fallzone_body_entered"]

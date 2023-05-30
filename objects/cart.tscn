@@ -8,16 +8,18 @@ radius = 60.075
 [node name="cart" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 3
+mass = 100.0
 
 [node name="Cart" type="Sprite2D" parent="."]
 texture = ExtResource("1_q4i46")
 
 [node name="Cart Collision Shape" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-287, 339, -247, 101, -276, -268, -243, -277, -198, 115, 333, 65, 327, -96, 374, -100, 378, 87, -209, 162, -234, 284, 356, 265, 349, 340)
+polygon = PackedVector2Array(-287, 339, -247, 101, -276, -268, -243, -277, -198, 115, 333, 65, 326, -180, 374, -187, 378, 87, -209, 162, -234, 284, 356, 265, 349, 340)
 
 [node name="Back Wheel Collision" type="RigidBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
+mass = 15.0
 
 [node name="Back Wheel Collision Shape" type="CollisionShape2D" parent="Back Wheel Collision"]
 position = Vector2(-245, 413)
@@ -32,6 +34,7 @@ offset_bottom = 54.0
 [node name="Front Wheel Collision" type="RigidBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
+mass = 15.0
 
 [node name="Front Wheel Collision Shape" type="CollisionShape2D" parent="Front Wheel Collision"]
 position = Vector2(249, 416)

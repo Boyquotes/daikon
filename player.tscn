@@ -21,14 +21,11 @@ const SPRINT_COOLDOWN = 2.0
 const AIR_ACCEL = 100.0
 const AIR_DEACCEL = 10000000.0
 const JUMP_VELOCITY = 1000.0
-const STOP_JUMP_FORCE = 450.0
-const MAX_SHOOT_POSE_TIME = 0.3
 const MAX_FLOOR_AIRBORNE_TIME = 0.15
 
 var anim := ''
 var siding_left := false
 var jumping := 0
-var stopping_jump := false
 var jump_release = true
 
 var floor_h_velocity: float = 0.0
@@ -85,60 +82,39 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	floor_h_velocity = 0.0
 
 	# Find the floor (a contact with upwards facing collision normal).
-	var found_floor := false
+	var on_floor := false
 	var floor_index := -1
 
 	for contact_index in state.get_contact_count():
 		var collision_normal = state.get_contact_local_normal(contact_index) 
 
 		if collision_normal.dot(Vector2(0, -1)) > 0.6:
-			found_floor = true
+			on_floor = true
 			floor_index = contact_index
-
-	# A good idea when implementing characters of all kinds,
-	# compensates for physics imprecision, as well as human reaction delay.
-	if found_floor:
-		airborne_time = 0.0
-	else:
-		airborne_time += step # Time it spent in the air.
-
-	var on_floor := airborne_time < MAX_FLOOR_AIRBORNE_TIME
-
-	# Process jump.
-	if jumping > 0:
-		if not jump:
-			stopping_jump = true
-
-		if stopping_jump:
-			velocity.y += STOP_JUMP_FORCE * step
 
 	# Check jump.
 	if jumping < 1 and jump:
-		velocity.y += -JUMP_VELOCITY
+		velocity.y += -JUMP_VELOCITY / (1 + jumping)
 		jumping += 1
-		stopping_jump = false
 		new_anim = 'jump'
 
+	# Process logic when character is on floor.
+	if move_left and not move_right:
+		velocity.x = -WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
+	elif move_right and not move_left:
+		velocity.x = WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
+	else:
+		velocity.x = 0
+		
+	# Check siding.
+	if velocity.x < 0 and move_left:
+		new_siding_left = true
+	elif velocity.x > 0 and move_right:
+		new_siding_left = false
+
 	if on_floor:
-		# Process jump
 		if jumping > 0:
 			jumping = 0
-		
-		# Process logic when character is on floor.
-		if move_left and not move_right:
-			velocity.x = -WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
-		elif move_right and not move_left:
-			velocity.x = WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
-		else:
-			velocity.x = 0
-
-		# Check siding.
-		if velocity.x < 0 and move_left:
-			new_siding_left = true
-		elif velocity.x > 0 and move_right:
-			new_siding_left = false
-		
-		if jumping > 0:
 			new_anim = 'Jump'
 		elif velocity.x == 0:
 			new_anim = 'Idle'
@@ -172,11 +148,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		animation_player.play(anim)
 
 	# Apply floor velocity.
-	if found_floor:
+	if on_floor:
 		floor_h_velocity = state.get_contact_collider_velocity_at_position(floor_index).x
 		velocity.x += floor_h_velocity
 
-	# Finally, apply gravity and set back the linear velocity.
+	# Finally, apply gravity and set bac k the linear velocity.
 	velocity += state.get_total_gravity() * step
 	state.set_linear_velocity(velocity)
 "
@@ -375,7 +351,7 @@ lock_rotation = true
 script = SubResource("GDScript_qccbp")
 
 [node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
 limit_right = 2048

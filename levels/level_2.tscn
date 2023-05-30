@@ -1,29 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdyyw1icp3vcr"]
+[gd_scene load_steps=6 format=3 uid="uid://bdyyw1icp3vcr"]
 
 [ext_resource type="PackedScene" uid="uid://dw0j7f8ahtsuk" path="res://player.tscn" id="1_gglu5"]
 [ext_resource type="PackedScene" uid="uid://bbijw8civ21j0" path="res://objects/cart.tscn" id="2_b7nso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ensoy"]
-size = Vector2(3067.5, 1131.75)
+size = Vector2(8600.75, 853)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfejn"]
+size = Vector2(1197.75, 187.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfkn2"]
+size = Vector2(1197.75, 1015.94)
 
 [node name="level_2" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1486, 1932.12)
+[node name="Ground Collision" type="CollisionShape2D" parent="Ground"]
+position = Vector2(4238.62, 1992)
 shape = SubResource("RectangleShape2D_ensoy")
 
-[node name="Panel" type="Panel" parent="StaticBody2D/CollisionShape2D"]
-offset_left = -1569.0
-offset_top = -565.0
-offset_right = 1665.0
-offset_bottom = 662.0
+[node name="Panel" type="Panel" parent="Ground/Ground Collision"]
+offset_left = -4350.0
+offset_top = -441.0
+offset_right = 4469.0
+offset_bottom = 443.0
+
+[node name="Ground Collision2" type="CollisionShape2D" parent="Ground"]
+position = Vector2(131, 662)
+shape = SubResource("RectangleShape2D_jfejn")
+
+[node name="Panel" type="Panel" parent="Ground/Ground Collision2"]
+offset_left = -632.0
+offset_top = -132.0
+offset_right = 600.0
+offset_bottom = 111.0
+
+[node name="Ground Collision3" type="CollisionShape2D" parent="Ground"]
+position = Vector2(8628, 1119.03)
+shape = SubResource("RectangleShape2D_qfkn2")
+
+[node name="Panel" type="Panel" parent="Ground/Ground Collision3"]
+offset_left = -632.0
+offset_top = -503.0
+offset_right = 600.0
+offset_bottom = 520.0
 
 [node name="Player" parent="." instance=ExtResource("1_gglu5")]
-position = Vector2(835, 575)
+position = Vector2(105, 309)
+
+[node name="Camera" parent="Player" index="0"]
+limit_right = 8192
+limit_bottom = 2880
 
 [node name="cart" parent="." instance=ExtResource("2_b7nso")]
-position = Vector2(800, 840)
+position = Vector2(1104, 1073)
+
+[editable path="Player"]
