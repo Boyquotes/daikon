@@ -27,8 +27,9 @@ const MAX_FLOOR_AIRBORNE_TIME = 0.15
 
 var anim := ''
 var siding_left := false
-var jumping := false
+var jumping := 0
 var stopping_jump := false
+var jump_release = true
 
 var floor_h_velocity: float = 0.0
 
@@ -37,6 +38,19 @@ var sprint_time: float = 0
 
 @onready var sprite := get_node('Sprites')
 @onready var animation_player := get_node('Animation')
+
+
+func _can_jump() -> bool:
+	var jump = Input.is_action_pressed(&'jump')
+
+	if jump and jump_release:
+		jump_release = false
+		return true
+
+	if not jump and not jump_release:
+		jump_release = true
+
+	return false
 
 
 func _can_sprint(vx: float, delta: float) -> bool:
@@ -63,8 +77,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	# Get player input.
 	var move_left := Input.is_action_pressed(&'left')
 	var move_right := Input.is_action_pressed(&'right')
-	var jump := Input.is_action_pressed(&'jump')
-	var sprint = _can_sprint(velocity.x, step)
+	var jump: bool = _can_jump()
+	var sprint: bool = _can_sprint(velocity.x, step)
 
 	# Deapply prev floor velocity.
 	velocity.x -= floor_h_velocity
@@ -91,17 +105,25 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var on_floor := airborne_time < MAX_FLOOR_AIRBORNE_TIME
 
 	# Process jump.
-	if jumping:
-		if velocity.y > 0:
-			# Set off the jumping flag if going down.
-			jumping = false
-		elif not jump:
+	if jumping > 0:
+		if not jump:
 			stopping_jump = true
 
 		if stopping_jump:
 			velocity.y += STOP_JUMP_FORCE * step
 
+	# Check jump.
+	if jumping < 1 and jump:
+		velocity.y += -JUMP_VELOCITY
+		jumping += 1
+		stopping_jump = false
+		new_anim = 'jump'
+
 	if on_floor:
+		# Process jump
+		if jumping > 0:
+			jumping = 0
+		
 		# Process logic when character is on floor.
 		if move_left and not move_right:
 			velocity.x = -WALK_MAX_VELOCITY * (SPRINT_COEF if sprint else 1)
@@ -110,19 +132,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		else:
 			velocity.x = 0
 
-		# Check jump.
-		if not jumping and jump:
-			velocity.y = -JUMP_VELOCITY
-			jumping = true
-			stopping_jump = false
-
 		# Check siding.
 		if velocity.x < 0 and move_left:
 			new_siding_left = true
 		elif velocity.x > 0 and move_right:
 			new_siding_left = false
 		
-		if jumping:
+		if jumping > 0:
 			new_anim = 'Jump'
 		elif velocity.x == 0:
 			new_anim = 'Idle'
