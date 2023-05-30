@@ -14,7 +14,7 @@ mass = 100.0
 texture = ExtResource("1_q4i46")
 
 [node name="Cart Collision Shape" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-287, 339, -247, 101, -276, -268, -243, -277, -198, 115, 333, 65, 326, -180, 374, -187, 378, 87, -209, 162, -234, 284, 356, 265, 349, 340)
+polygon = PackedVector2Array(-304, 337, -247, 101, -282, -290, -249, -297, -190, -1, -198, 115, 333, 65, 326, -180, 374, -187, 378, 87, -209, 162, -234, 284, 356, 265, 349, 340)
 
 [node name="Back Wheel Collision" type="RigidBody2D" parent="."]
 collision_layer = 2
