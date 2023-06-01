@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=4 format=3 uid="uid://bjyldghoet6an"]
-=======
 [gd_scene load_steps=5 format=3 uid="uid://c0l7pupe38tdo"]
->>>>>>> 53a3a9f1c7b8bc763135a5a680fc0da690ef2318
 
 [ext_resource type="PackedScene" path="res://bg.tscn" id="1_lgqd5"]
 [ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_04q6w"]
@@ -20,7 +16,7 @@ func _ready():
 
 
 func _on_start_pressed():
-	tree.change_scene_to_file('res://levels/intro_pt_2.tscn')
+	tree.change_scene_to_file('res://levels/intro_pt_1.tscn')
 
 
 func _on_quit_pressed():

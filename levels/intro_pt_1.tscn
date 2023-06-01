@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://wvkdji700l87"]
+[gd_scene load_steps=14 format=3 uid="uid://wvkdji700l87"]
 
 [ext_resource type="Texture2D" uid="uid://bpoaalwcrw1v" path="res://assets/bg/intro_pt1.png" id="1_cnsmc"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="2_0o7yb"]
+[ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_0o7yb"]
 [ext_resource type="Texture2D" uid="uid://banqtej88s5jr" path="res://assets/mechanic/mechanic_1.png" id="3_gl155"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvmih"]
@@ -30,6 +30,9 @@ size = Vector2(757.5, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qdpeq"]
 size = Vector2(130.5, 188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73m2q"]
+size = Vector2(1270, 649)
 
 [node name="intro_pt1" type="Node2D"]
 position = Vector2(7, -71)
@@ -89,3 +92,11 @@ texture = ExtResource("3_gl155")
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="old daikon"]
 position = Vector2(554, 902)
 shape = SubResource("RectangleShape2D_qdpeq")
+
+[node name="exit_intro_1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_intro_1"]
+position = Vector2(2662, 1127)
+shape = SubResource("RectangleShape2D_73m2q")
+
+[connection signal="body_entered" from="exit_intro_1" to="Player" method="_on_exit_intro_1_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw0j7f8ahtsuk"]
+[gd_scene load_steps=17 format=3 uid="uid://d12v1rqhcdog7"]
 
 [ext_resource type="Texture2D" uid="uid://dmyy3hniip87i" path="res://assets/daikon/idle/idle1.png" id="1_fcj0l"]
 [ext_resource type="Texture2D" uid="uid://cmwhsna1lqk47" path="res://assets/daikon/jump/jump2.png" id="1_jwkjm"]
@@ -154,6 +154,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	# Finally, apply gravity and set bac k the linear velocity.
 	velocity += state.get_total_gravity() * step
 	state.set_linear_velocity(velocity)
+
+
+func _on_exit_intro_1_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file('res://levels/intro_pt_2.tscn')
+
+
+func _on_exit_intro_2_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file('res://levels/level_1.tscn')
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r0q42"]
