@@ -50,7 +50,7 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 light_mask = 3
-position = Vector2(392, 1430)
+position = Vector2(401, 1430)
 shape = SubResource("RectangleShape2D_nvmih")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]

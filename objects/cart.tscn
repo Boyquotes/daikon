@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbijw8civ21j0"]
 
-[ext_resource type="Texture2D" uid="uid://bthfgvqnktkuo" path="res://assets/objects/cart.png" id="1_q4i46"]
+[ext_resource type="Texture2D" uid="uid://b644co46m226h" path="res://assets/objects/cart-PhotoRoom.png" id="1_dq1wg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m37c3"]
 radius = 60.075
@@ -11,9 +11,10 @@ collision_mask = 3
 mass = 100.0
 
 [node name="Cart" type="Sprite2D" parent="."]
-texture = ExtResource("1_q4i46")
+texture = ExtResource("1_dq1wg")
 
 [node name="Cart Collision Shape" type="CollisionPolygon2D" parent="."]
+position = Vector2(-31, 4)
 polygon = PackedVector2Array(-304, 337, -247, 101, -282, -290, -249, -297, -190, -1, -198, 115, 333, 65, 326, -180, 374, -187, 378, 87, -209, 162, -234, 284, 356, 265, 349, 340)
 
 [node name="Back Wheel Collision" type="RigidBody2D" parent="."]
@@ -37,7 +38,7 @@ collision_mask = 3
 mass = 15.0
 
 [node name="Front Wheel Collision Shape" type="CollisionShape2D" parent="Front Wheel Collision"]
-position = Vector2(249, 416)
+position = Vector2(215, 415)
 shape = SubResource("CircleShape2D_m37c3")
 
 [node name="Panel" type="Panel" parent="Front Wheel Collision/Front Wheel Collision Shape"]
@@ -52,6 +53,6 @@ node_a = NodePath("..")
 node_b = NodePath("../Back Wheel Collision")
 
 [node name="Front Joint" type="PinJoint2D" parent="."]
-position = Vector2(249, 417)
+position = Vector2(214, 415)
 node_a = NodePath("..")
 node_b = NodePath("../Front Wheel Collision")
