@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cp33t7flqiofm"]
+[gd_scene load_steps=20 format=3 uid="uid://b1ex0ep7seqd5"]
 
 [ext_resource type="Texture2D" uid="uid://daxci3jp2o80n" path="res://assets/bg/scene4.png" id="1_n1g2j"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_6at71"]
@@ -48,7 +48,7 @@ size = Vector2(314.5, 34)
 size = Vector2(154, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x04hp"]
-size = Vector2(1844, 854)
+size = Vector2(2040, 854)
 
 [node name="level_4" type="Node2D"]
 

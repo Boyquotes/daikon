@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://e3skuvhsdsfx"]
+
+[ext_resource type="Texture2D" uid="uid://s1kxtr5mmlp" path="res://assets/objects/glassJar.png" id="1_6oaow"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m0ppb"]
+a = Vector2(-159, 194)
+b = Vector2(-157, -132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l25mr"]
+size = Vector2(326, 76)
+
+[node name="glass_jar" type="RigidBody2D"]
+rotation = -1.57095
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6oaow")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -1)
+shape = SubResource("SegmentShape2D_m0ppb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(320, 2)
+shape = SubResource("SegmentShape2D_m0ppb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 236)
+shape = SubResource("RectangleShape2D_l25mr")

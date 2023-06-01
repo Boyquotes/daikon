@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfjecw4q6rwcd"]
+[gd_scene load_steps=14 format=3 uid="uid://t2n6jtf2icrg"]
 
 [ext_resource type="Texture2D" uid="uid://do0ehrf3hm1tx" path="res://assets/bg/scene3_new.png" id="1_0ngbx"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_3yeux"]
@@ -69,7 +69,6 @@ shape = SubResource("RectangleShape2D_c1w8n")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1162, 610)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f4nje")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
