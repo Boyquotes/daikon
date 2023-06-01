@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rlhxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k3av"]
-size = Vector2(666, 31)
+size = Vector2(575, 31)
 
 [node name="scale" type="Node2D"]
 
@@ -22,12 +22,12 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="Plank Collision" type="CollisionShape2D" parent="Plank"]
-position = Vector2(4, 3)
+position = Vector2(3.5, 3)
 shape = SubResource("RectangleShape2D_7k3av")
 
 [node name="Scale" type="Sprite2D" parent="Plank/Plank Collision"]
-position = Vector2(-5, 0)
-scale = Vector2(3.18593, 2.35294)
+position = Vector2(-2.5, 0)
+scale = Vector2(2.86935, 1.94118)
 texture = ExtResource("1_7xjp6")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
