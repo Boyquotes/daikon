@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4p52r50wnip0"]
+[gd_scene load_steps=9 format=3 uid="uid://cqd1shu20q584"]
 
 [ext_resource type="Texture2D" uid="uid://daxci3jp2o80n" path="res://assets/bg/scene4.png" id="1_8w8ql"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_wvc6u"]
-[ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_k1888"]
+[ext_resource type="PackedScene" path="res://objects/glass_jar.tscn" id="5_k1888"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg36v"]
 size = Vector2(411.5, 261)
