@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdyyw1icp3vcr"]
+[gd_scene load_steps=10 format=3 uid="uid://bdyyw1icp3vcr"]
 
 [ext_resource type="Texture2D" uid="uid://bvvvjlcl504qe" path="res://assets/objects/scale.png" id="1_db2tv"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="1_gglu5"]
@@ -16,6 +16,9 @@ size = Vector2(1197.75, 1015.94)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tj5b"]
 size = Vector2(2761, 1083)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4v4l"]
+size = Vector2(749.5, 123.5)
 
 [node name="level_2" type="Node2D"]
 
@@ -90,6 +93,15 @@ texture = ExtResource("4_ai4aj")
 position = Vector2(5877, 584)
 scale = Vector2(7.08794, 4.54412)
 texture = ExtResource("1_db2tv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-136, 194.75)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_s4v4l")
 
 [connection signal="body_entered" from="exit_level_2" to="Player" method="_on_exit_level_2_body_entered"]
 

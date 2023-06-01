@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://wvkdji700l87"]
+[gd_scene load_steps=15 format=3 uid="uid://wvkdji700l87"]
 
 [ext_resource type="Texture2D" uid="uid://bpoaalwcrw1v" path="res://assets/bg/intro_pt1.png" id="1_cnsmc"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_0o7yb"]
@@ -33,6 +33,9 @@ size = Vector2(130.5, 188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73m2q"]
 size = Vector2(1270, 649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rjam"]
+size = Vector2(328, 360.5)
 
 [node name="intro_pt1" type="Node2D"]
 position = Vector2(7, -71)
@@ -99,4 +102,11 @@ shape = SubResource("RectangleShape2D_qdpeq")
 position = Vector2(2662, 1127)
 shape = SubResource("RectangleShape2D_73m2q")
 
+[node name="intro_blocker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="intro_blocker"]
+position = Vector2(-156, 1281.75)
+shape = SubResource("RectangleShape2D_2rjam")
+
 [connection signal="body_entered" from="exit_intro_1" to="Player" method="_on_exit_intro_1_body_entered"]
+[connection signal="body_entered" from="intro_blocker" to="Player" method="_on_intro_blocker_body_entered"]

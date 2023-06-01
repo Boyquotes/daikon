@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfjecw4q6rwcd"]
+[gd_scene load_steps=15 format=3 uid="uid://bfjecw4q6rwcd"]
 
 [ext_resource type="Texture2D" uid="uid://do0ehrf3hm1tx" path="res://assets/bg/scene3_new.png" id="1_0ngbx"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_3yeux"]
@@ -33,6 +33,9 @@ size = Vector2(400.5, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqobf"]
 size = Vector2(580, 517)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i25o1"]
+size = Vector2(579, 38)
 
 [node name="level_3" type="Node2D"]
 
@@ -100,5 +103,14 @@ position = Vector2(1400, 587)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2340, 483)
 shape = SubResource("RectangleShape2D_vqobf")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(2, 92.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_i25o1")
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]

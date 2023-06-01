@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1ex0ep7seqd5"]
+[gd_scene load_steps=22 format=3 uid="uid://b1ex0ep7seqd5"]
 
 [ext_resource type="Texture2D" uid="uid://daxci3jp2o80n" path="res://assets/bg/scene4.png" id="1_n1g2j"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_6at71"]
@@ -49,6 +49,12 @@ size = Vector2(154, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x04hp"]
 size = Vector2(4087, 854)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htq85"]
+size = Vector2(52, 679)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v527w"]
+size = Vector2(777, 537)
 
 [node name="level_4" type="Node2D"]
 
@@ -136,3 +142,19 @@ position = Vector2(1124, 1210)
 
 [node name="cookie" parent="." instance=ExtResource("4_jysd2")]
 position = Vector2(612, 1307)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-1, 917)
+shape = SubResource("RectangleShape2D_htq85")
+
+[node name="exit_level_4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_level_4"]
+position = Vector2(2461, 767)
+shape = SubResource("RectangleShape2D_v527w")
+
+[connection signal="body_entered" from="exit_level_4" to="Player" method="_on_exit_level_4_body_entered"]
