@@ -1,62 +1,84 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4p52r50wnip0"]
+[gd_scene load_steps=8 format=3 uid="uid://b4p52r50wnip0"]
 
-[ext_resource type="Texture2D" uid="uid://daxci3jp2o80n" path="res://assets/bg/scene4.png" id="1_8w8ql"]
+[ext_resource type="Texture2D" uid="uid://ca0iuik6ap8q7" path="res://assets/bg/intro_pt_2.png" id="1_aexa4"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_wvc6u"]
+[ext_resource type="PackedScene" uid="uid://704fpayvqb61" path="res://objects/carrot.tscn" id="4_ysiy3"]
 [ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_k1888"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg36v"]
-size = Vector2(411.5, 261)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvkv4"]
-size = Vector2(222.5, 26)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v384d"]
-size = Vector2(215, 9.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrjmg"]
-size = Vector2(221, 9)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x04hp"]
-size = Vector2(2040, 854)
+size = Vector2(4087, 854)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opx0m"]
+size = Vector2(833, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvqwq"]
+size = Vector2(1085, 20)
 
 [node name="level_5" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1041.5, 721.5)
-scale = Vector2(1.00928, 0.932943)
-texture = ExtResource("1_8w8ql")
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(3062, 774)
+texture = ExtResource("1_aexa4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1030, 771)
+texture = ExtResource("1_aexa4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(227.25, 1353)
-shape = SubResource("RectangleShape2D_mg36v")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1130.75, 808)
-shape = SubResource("RectangleShape2D_pvkv4")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(928.5, 880.25)
-shape = SubResource("RectangleShape2D_v384d")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(803.5, 960.5)
-shape = SubResource("RectangleShape2D_jrjmg")
-
 [node name="Player" parent="." instance=ExtResource("2_wvc6u")]
-position = Vector2(109, 1117)
+position = Vector2(294, 1054)
 
 [node name="floor" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(1041, 1862)
+position = Vector2(2053.5, 1592)
 shape = SubResource("RectangleShape2D_x04hp")
 
 [node name="glass_jar" parent="." instance=ExtResource("5_k1888")]
-position = Vector2(1287, 1346)
+position = Vector2(893, 1071)
 collision_mask = 3
+
+[node name="carrot" parent="." instance=ExtResource("4_ysiy3")]
+position = Vector2(1825, 799)
+gravity_scale = 0.0
+
+[node name="carrot2" parent="." instance=ExtResource("4_ysiy3")]
+position = Vector2(1672, 802)
+gravity_scale = 0.0
+
+[node name="carrot3" parent="." instance=ExtResource("4_ysiy3")]
+position = Vector2(1983, 798)
+gravity_scale = 0.0
+
+[node name="carrot4" parent="." instance=ExtResource("4_ysiy3")]
+position = Vector2(1514, 795)
+gravity_scale = 0.0
+
+[node name="carrot5" parent="." instance=ExtResource("4_ysiy3")]
+position = Vector2(1366, 791)
+gravity_scale = 0.0
+
+[node name="Shelf_1" type="StaticBody2D" parent="."]
+position = Vector2(3117, 663)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_1"]
+position = Vector2(553.5, 1.5)
+shape = SubResource("RectangleShape2D_opx0m")
+
+[node name="Shelf_2" type="StaticBody2D" parent="."]
+position = Vector2(7, 926)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_2"]
+position = Vector2(532.5, 0)
+shape = SubResource("RectangleShape2D_wvqwq")

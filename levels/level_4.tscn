@@ -48,7 +48,7 @@ size = Vector2(314.5, 34)
 size = Vector2(154, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x04hp"]
-size = Vector2(2040, 854)
+size = Vector2(4087, 854)
 
 [node name="level_4" type="Node2D"]
 
