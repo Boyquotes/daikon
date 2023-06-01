@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0xvo8vrljipg"]
+[gd_scene load_steps=3 format=3 uid="uid://b0q0hqrlb85q1"]
 
-[ext_resource type="Texture2D" uid="uid://b6irme7o83w28" path="res://assets/bg/bg1.jpeg" id="1_tbg6h"]
+[ext_resource type="Texture2D" uid="uid://dmmhrw7p0ywqr" path="res://assets/bg/new_background.png" id="1_46lf2"]
 
 [sub_resource type="GDScript" id="GDScript_ic5gg"]
 script/source = "extends ParallaxBackground
@@ -20,5 +20,6 @@ script = SubResource("GDScript_ic5gg")
 motion_mirroring = Vector2(4096, 2.08165e-12)
 
 [node name="Background" type="Sprite2D" parent="Parallax Layer"]
+position = Vector2(6, 547)
 scale = Vector2(2, 2)
-texture = ExtResource("1_tbg6h")
+texture = ExtResource("1_46lf2")

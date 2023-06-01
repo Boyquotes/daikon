@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdyyw1icp3vcr"]
 
+[ext_resource type="Texture2D" uid="uid://bvvvjlcl504qe" path="res://assets/objects/scale.png" id="1_db2tv"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="1_gglu5"]
 [ext_resource type="PackedScene" uid="uid://bbijw8civ21j0" path="res://objects/cart.tscn" id="2_b7nso"]
-[ext_resource type="PackedScene" uid="uid://c5u5ffkmknhpw" path="res://objects/blueberry.tscn" id="3_x7p28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ensoy"]
 size = Vector2(8600.75, 853)
@@ -42,6 +42,11 @@ offset_top = -588.0
 offset_right = 600.0
 offset_bottom = 615.0
 
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Ground Collision2"]
+position = Vector2(66, -543.03)
+scale = Vector2(5.29271, 3.76471)
+texture = ExtResource("1_db2tv")
+
 [node name="Ground Collision3" type="CollisionShape2D" parent="Ground"]
 position = Vector2(8628, 1119.03)
 shape = SubResource("RectangleShape2D_qfkn2")
@@ -58,9 +63,6 @@ position = Vector2(105, 309)
 [node name="Camera" parent="Player" index="0"]
 limit_right = 8192
 limit_bottom = 2880
-
-[node name="blueberry" parent="." instance=ExtResource("3_x7p28")]
-position = Vector2(1279, 1041)
 
 [node name="cart" parent="." instance=ExtResource("2_b7nso")]
 position = Vector2(1104, 1073)
