@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 [gd_scene load_steps=4 format=3 uid="uid://bjyldghoet6an"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://c0l7pupe38tdo"]
+>>>>>>> 53a3a9f1c7b8bc763135a5a680fc0da690ef2318
 
 [ext_resource type="PackedScene" path="res://bg.tscn" id="1_lgqd5"]
 [ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_04q6w"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="3_jld8k"]
 
 [sub_resource type="GDScript" id="GDScript_dneka"]
 script/source = "extends Node2D
 
 
 @onready var tree = get_tree()
+
+
+func _ready():
+	get_node('Sound/Intro').play()
 
 
 func _on_start_pressed():
@@ -78,6 +87,8 @@ layout_mode = 2
 theme = ExtResource("2_04q6w")
 theme_override_font_sizes/font_size = 120
 text = "Quit"
+
+[node name="Sound" parent="." instance=ExtResource("3_jld8k")]
 
 [connection signal="pressed" from="Button List/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button List/Quit" to="." method="_on_quit_pressed"]

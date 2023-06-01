@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvh5babd81l4j"]
+
+[ext_resource type="AudioStream" uid="uid://dcwmegevdgiax" path="res://assets/sounds/theme.wav" id="1_1ys0p"]
+[ext_resource type="AudioStream" uid="uid://ujg2w1p1yf8m" path="res://assets/sounds/intro.wav" id="2_oiv4m"]
+
+[sub_resource type="GDScript" id="GDScript_3glbc"]
+script/source = "extends AudioStreamPlayer
+
+
+@onready var audio = get_node('.')
+
+
+func _on_finished():
+	audio.play()
+"
+
+[sub_resource type="GDScript" id="GDScript_q085d"]
+script/source = "extends AudioStreamPlayer
+
+
+@onready var audio = get_node('.')
+
+
+func _on_finished():
+	audio.play()
+"
+
+[node name="Sound" type="Node"]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_1ys0p")
+script = SubResource("GDScript_3glbc")
+
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_oiv4m")
+script = SubResource("GDScript_q085d")
+
+[connection signal="finished" from="BGM" to="BGM" method="_on_finished"]
+[connection signal="finished" from="Intro" to="BGM" method="_on_intro_finished"]
+[connection signal="finished" from="Intro" to="Intro" method="_on_finished"]
