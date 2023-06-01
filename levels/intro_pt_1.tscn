@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://wvkdji700l87"]
+[gd_scene load_steps=16 format=3 uid="uid://wvkdji700l87"]
 
 [ext_resource type="Texture2D" uid="uid://bpoaalwcrw1v" path="res://assets/bg/intro_pt1.png" id="1_cnsmc"]
+[ext_resource type="Script" path="res://levels/intro_pt_1.gd" id="1_go2j4"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_0o7yb"]
 [ext_resource type="PackedScene" uid="uid://canlelm3tdg2l" path="res://objects/mechanic.tscn" id="3_v4bl7"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="4_n6qh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvmih"]
 size = Vector2(767.5, 27.5)
@@ -36,6 +38,7 @@ size = Vector2(1270, 1545)
 
 [node name="intro_pt1" type="Node2D"]
 position = Vector2(7, -71)
+script = ExtResource("1_go2j4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1016, 759)
@@ -99,6 +102,8 @@ flip_h = true
 
 [node name="Collision" parent="mechanic" index="1"]
 position = Vector2(-14, 27)
+
+[node name="Sound" parent="." instance=ExtResource("4_n6qh0")]
 
 [connection signal="body_entered" from="exit_intro_1" to="Player" method="_on_exit_intro_1_body_entered"]
 

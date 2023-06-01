@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmdjpbvxlxh3w"]
+[gd_scene load_steps=19 format=3 uid="uid://cmdjpbvxlxh3w"]
 
 [ext_resource type="Texture2D" uid="uid://y2witc6kjhdx" path="res://assets/bg/scene1_1.png" id="1_27q4p"]
 [ext_resource type="PackedScene" uid="uid://boelrqhen7t2i" path="res://objects/scale.tscn" id="1_i6uy6"]
@@ -9,17 +9,16 @@
 script/source = "extends Node2D
 
 
-@onready var tree = get_tree()
-
-
+	
 func _on_fallzone_body_entered(body):
 	if body.name == 'Player':
-		tree.change_scene_to_file('res://levels/level_1.tscn')
+		get_tree().change_scene_to_file('res://levels/level_1.tscn')
 
 
 func _on_next_body_entered(body):
 	if body.name == 'Player':
-		tree.change_scene_to_file('res://levels/level_2.tscn')
+		get_tree().change_scene_to_file('res://levels/level_2.tscn')
+		
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri0y6"]
@@ -54,6 +53,12 @@ size = Vector2(545, 1088)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jdje"]
 size = Vector2(845, 649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33t0e"]
+size = Vector2(679.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ascnr"]
+size = Vector2(546, 20)
 
 [node name="Level 1" type="Node2D"]
 script = SubResource("GDScript_x2ql8")
@@ -125,6 +130,24 @@ shape = SubResource("RectangleShape2D_nstkn")
 [node name="Next Level Collision" type="CollisionShape2D" parent="Next"]
 position = Vector2(2477, 240.5)
 shape = SubResource("RectangleShape2D_3jdje")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 900.75)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_33t0e")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(2043, 976)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ascnr")
 
 [connection signal="body_entered" from="Fallzone" to="." method="_on_fallzone_body_entered"]
 [connection signal="body_entered" from="Next" to="." method="_on_next_body_entered"]
