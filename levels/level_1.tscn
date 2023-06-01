@@ -9,17 +9,16 @@
 script/source = "extends Node2D
 
 
-@onready var tree = get_tree()
-
-
+	
 func _on_fallzone_body_entered(body):
 	if body.name == 'Player':
-		tree.change_scene_to_file('res://levels/level_1.tscn')
+		get_tree().change_scene_to_file('res://levels/level_1.tscn')
 
 
 func _on_next_body_entered(body):
 	if body.name == 'Player':
-		tree.change_scene_to_file('res://levels/level_2.tscn')
+		get_tree().change_scene_to_file('res://levels/level_2.tscn')
+		
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri0y6"]

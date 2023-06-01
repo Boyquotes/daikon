@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfjecw4q6rwcd"]
+[gd_scene load_steps=17 format=3 uid="uid://bfjecw4q6rwcd"]
 
 [ext_resource type="Texture2D" uid="uid://do0ehrf3hm1tx" path="res://assets/bg/scene3_new.png" id="1_0ngbx"]
+[ext_resource type="Script" path="res://levels/level_3.gd" id="1_8qd10"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_3yeux"]
 [ext_resource type="PackedScene" uid="uid://c5u5ffkmknhpw" path="res://objects/blueberry.tscn" id="3_vlau7"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="5_36ibj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qymhi"]
 size = Vector2(394, 23.5)
@@ -38,6 +40,7 @@ size = Vector2(580, 517)
 size = Vector2(579, 38)
 
 [node name="level_3" type="Node2D"]
+script = ExtResource("1_8qd10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1038, 777)
@@ -112,5 +115,7 @@ collision_mask = 3
 position = Vector2(2, 92.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_i25o1")
+
+[node name="Sound" parent="." instance=ExtResource("5_36ibj")]
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]

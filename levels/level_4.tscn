@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1ex0ep7seqd5"]
+[gd_scene load_steps=24 format=3 uid="uid://b1ex0ep7seqd5"]
 
 [ext_resource type="Texture2D" uid="uid://daxci3jp2o80n" path="res://assets/bg/scene4.png" id="1_n1g2j"]
+[ext_resource type="Script" path="res://levels/level_4.gd" id="1_u4l06"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_6at71"]
 [ext_resource type="PackedScene" uid="uid://boelrqhen7t2i" path="res://objects/scale.tscn" id="3_8xfk2"]
 [ext_resource type="PackedScene" uid="uid://bskoxr0wa0nti" path="res://objects/cookie.tscn" id="4_jysd2"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="6_6to2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg36v"]
 size = Vector2(411.5, 261)
@@ -57,6 +59,7 @@ size = Vector2(52, 679)
 size = Vector2(777, 537)
 
 [node name="level_4" type="Node2D"]
+script = ExtResource("1_u4l06")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1041.5, 721.5)
@@ -156,5 +159,7 @@ shape = SubResource("RectangleShape2D_htq85")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit_level_4"]
 position = Vector2(2461, 767)
 shape = SubResource("RectangleShape2D_v527w")
+
+[node name="Sound" parent="." instance=ExtResource("6_6to2n")]
 
 [connection signal="body_entered" from="exit_level_4" to="Player" method="_on_exit_level_4_body_entered"]

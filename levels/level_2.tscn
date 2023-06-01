@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdyyw1icp3vcr"]
+[gd_scene load_steps=12 format=3 uid="uid://bdyyw1icp3vcr"]
 
 [ext_resource type="Texture2D" uid="uid://bvvvjlcl504qe" path="res://assets/objects/scale.png" id="1_db2tv"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="1_gglu5"]
+[ext_resource type="Script" path="res://levels/level_2.gd" id="1_qk8qu"]
 [ext_resource type="PackedScene" uid="uid://bbijw8civ21j0" path="res://objects/cart.tscn" id="2_b7nso"]
 [ext_resource type="Texture2D" uid="uid://dmmhrw7p0ywqr" path="res://assets/bg/new_background.png" id="4_ai4aj"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="6_3n3li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ensoy"]
 size = Vector2(7168.75, 853)
@@ -21,6 +23,7 @@ size = Vector2(2761, 1083)
 size = Vector2(749.5, 123.5)
 
 [node name="level_2" type="Node2D"]
+script = ExtResource("1_qk8qu")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -102,6 +105,8 @@ collision_mask = 3
 position = Vector2(-136, 194.75)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_s4v4l")
+
+[node name="Sound" parent="." instance=ExtResource("6_3n3li")]
 
 [connection signal="body_entered" from="exit_level_2" to="Player" method="_on_exit_level_2_body_entered"]
 
