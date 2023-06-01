@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgjlb6jud8vpb"]
+
+[ext_resource type="Script" path="res://levels/level_5.gd" id="1_odqj3"]
+[ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
+[ext_resource type="PackedScene" uid="uid://704fpayvqb61" path="res://objects/carrot.tscn" id="3_3t0is"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="4_yycsc"]
+[ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_738py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opx0m"]
+size = Vector2(833, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvqwq"]
+size = Vector2(1085, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8j7j"]
+size = Vector2(1813.84, 64.9261)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
+size = Vector2(200.229, 18.7178)
+
+[node name="level_5" type="Node2D"]
+script = ExtResource("1_odqj3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="Player" parent="." instance=ExtResource("2_8kpm8")]
+position = Vector2(115, 1133)
+metadata/_edit_group_ = true
+
+[node name="Camera" parent="Player" index="0"]
+limit_right = 4000
+
+[node name="carrot" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(636, 1256)
+gravity_scale = 0.0
+
+[node name="carrot2" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(929, 1095)
+rotation = 1.58548
+gravity_scale = 0.0
+
+[node name="carrot3" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1232, 930)
+gravity_scale = 0.0
+
+[node name="carrot4" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1628, 798)
+gravity_scale = 0.0
+
+[node name="Shelf_1" type="StaticBody2D" parent="."]
+position = Vector2(2608, -650)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_1"]
+position = Vector2(553.5, 1.5)
+shape = SubResource("RectangleShape2D_opx0m")
+
+[node name="Shelf_2" type="StaticBody2D" parent="."]
+position = Vector2(1935, 780)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_2"]
+position = Vector2(532.5, 0)
+shape = SubResource("RectangleShape2D_wvqwq")
+
+[node name="Sound" parent="." instance=ExtResource("4_yycsc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-42, 755)
+rotation = 1.5708
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_v8j7j")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(1440.38, 1635.12)
+scale = Vector2(14.4384, 19.5147)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0.527756, -2.15838)
+shape = SubResource("RectangleShape2D_1yqmu")
+
+[node name="carrot6" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(2106, 318)
+rotation = -0.0202969
+gravity_scale = 0.0
+
+[node name="carrot7" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(2248, 313)
+rotation = -0.00717044
+gravity_scale = 0.0
+
+[node name="carrot8" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(2532, 313)
+rotation = -0.00717044
+gravity_scale = 0.0
+
+[node name="carrot9" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(2390, 313)
+rotation = -0.00717044
+gravity_scale = 0.0
+
+[node name="glass_jar" parent="." instance=ExtResource("5_738py")]
+position = Vector2(2193, 659)
+collision_layer = 2
+collision_mask = 3
+
+[editable path="Player"]

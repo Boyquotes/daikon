@@ -1,15 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://e3skuvhsdsfx"]
+[gd_scene load_steps=7 format=3 uid="uid://e3skuvhsdsfx"]
 
 [ext_resource type="Texture2D" uid="uid://s1kxtr5mmlp" path="res://assets/objects/glassJar.png" id="1_6oaow"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_m0ppb"]
-a = Vector2(-159, 194)
-b = Vector2(-157, -132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l25mr"]
 size = Vector2(326, 76)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6wx2"]
+size = Vector2(32.9866, 349.983)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nt7er"]
+size = Vector2(30.9874, 335)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbb6u"]
+size = Vector2(9.99845, 67.4523)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lftk2"]
+size = Vector2(11.3593, 60.3909)
+
 [node name="glass_jar" type="RigidBody2D"]
+position = Vector2(-8, -54)
 rotation = -1.57095
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
@@ -17,14 +26,26 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6oaow")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-7, -1)
-shape = SubResource("SegmentShape2D_m0ppb")
+[node name="Bottom" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0338135, 220)
+shape = SubResource("RectangleShape2D_l25mr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(320, 2)
-shape = SubResource("SegmentShape2D_m0ppb")
+position = Vector2(-148.497, 21.9757)
+shape = SubResource("RectangleShape2D_a6wx2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(147.489, 30.0243)
+shape = SubResource("RectangleShape2D_nt7er")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 236)
-shape = SubResource("RectangleShape2D_l25mr")
+visible = false
+position = Vector2(142.679, -170.403)
+rotation = -0.314561
+shape = SubResource("RectangleShape2D_lbb6u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-145.974, -170.022)
+rotation = 0.29418
+shape = SubResource("RectangleShape2D_lftk2")

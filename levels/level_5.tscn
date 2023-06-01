@@ -1,14 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqd1shu20q584"]
 
-[ext_resource type="Texture2D" uid="uid://ca0iuik6ap8q7" path="res://assets/bg/intro_pt_2.png" id="1_aexa4"]
 [ext_resource type="Script" path="res://levels/level_5.gd" id="1_h2lbj"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_wvc6u"]
-[ext_resource type="PackedScene" path="res://objects/carrot.tscn" id="4_ysiy3"]
-[ext_resource type="PackedScene" path="res://objects/glass_jar.tscn" id="5_k1888"]
+[ext_resource type="PackedScene" uid="uid://704fpayvqb61" path="res://objects/carrot.tscn" id="4_ysiy3"]
+[ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_k1888"]
 [ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="6_skm6w"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x04hp"]
-size = Vector2(4087, 854)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opx0m"]
 size = Vector2(833, 23)
@@ -16,61 +12,52 @@ size = Vector2(833, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvqwq"]
 size = Vector2(1085, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8j7j"]
+size = Vector2(1818, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
+size = Vector2(200.229, 18.7178)
+
 [node name="level_5" type="Node2D"]
 script = ExtResource("1_h2lbj")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(3062, 774)
-texture = ExtResource("1_aexa4")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(1030, 771)
-texture = ExtResource("1_aexa4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
 [node name="Player" parent="." instance=ExtResource("2_wvc6u")]
-position = Vector2(294, 1054)
+position = Vector2(342, 396)
+metadata/_edit_group_ = true
 
 [node name="Camera" parent="Player" index="0"]
 limit_right = 4000
 
-[node name="floor" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(2053.5, 1592)
-shape = SubResource("RectangleShape2D_x04hp")
-
 [node name="glass_jar" parent="." instance=ExtResource("5_k1888")]
-position = Vector2(893, 1071)
+position = Vector2(734, 272)
 collision_mask = 3
 
 [node name="carrot" parent="." instance=ExtResource("4_ysiy3")]
-position = Vector2(1825, 799)
+position = Vector2(2354, 218)
 gravity_scale = 0.0
 
 [node name="carrot2" parent="." instance=ExtResource("4_ysiy3")]
-position = Vector2(1672, 802)
+position = Vector2(1415, 658)
 gravity_scale = 0.0
 
 [node name="carrot3" parent="." instance=ExtResource("4_ysiy3")]
-position = Vector2(1983, 798)
+position = Vector2(1551, 659)
 gravity_scale = 0.0
 
 [node name="carrot4" parent="." instance=ExtResource("4_ysiy3")]
-position = Vector2(1514, 795)
+position = Vector2(2504, 230)
 gravity_scale = 0.0
 
 [node name="carrot5" parent="." instance=ExtResource("4_ysiy3")]
-position = Vector2(1366, 791)
+position = Vector2(1692, 656)
 gravity_scale = 0.0
 
 [node name="Shelf_1" type="StaticBody2D" parent="."]
-position = Vector2(3117, 663)
+position = Vector2(1777, 535)
 collision_layer = 2
 collision_mask = 3
 metadata/_edit_group_ = true
@@ -80,7 +67,7 @@ position = Vector2(553.5, 1.5)
 shape = SubResource("RectangleShape2D_opx0m")
 
 [node name="Shelf_2" type="StaticBody2D" parent="."]
-position = Vector2(7, 926)
+position = Vector2(18, 547)
 collision_layer = 2
 collision_mask = 3
 metadata/_edit_group_ = true
@@ -90,5 +77,21 @@ position = Vector2(532.5, 0)
 shape = SubResource("RectangleShape2D_wvqwq")
 
 [node name="Sound" parent="." instance=ExtResource("6_skm6w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2920, 758)
+rotation = 1.5648
+shape = SubResource("RectangleShape2D_v8j7j")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(1440.38, 1635.12)
+scale = Vector2(14.4384, 19.5147)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-0.164505, -8.20535)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1yqmu")
 
 [editable path="Player"]
