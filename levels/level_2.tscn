@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdyyw1icp3vcr"]
+[gd_scene load_steps=8 format=3 uid="uid://bdyyw1icp3vcr"]
 
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="1_gglu5"]
 [ext_resource type="PackedScene" uid="uid://bbijw8civ21j0" path="res://objects/cart.tscn" id="2_b7nso"]
@@ -12,6 +12,9 @@ size = Vector2(1197.75, 1137.94)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfkn2"]
 size = Vector2(1197.75, 1015.94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tj5b"]
+size = Vector2(2761, 1083)
 
 [node name="level_2" type="Node2D"]
 
@@ -61,5 +64,13 @@ position = Vector2(1279, 1041)
 
 [node name="cart" parent="." instance=ExtResource("2_b7nso")]
 position = Vector2(1104, 1073)
+
+[node name="exit_level_2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_level_2"]
+position = Vector2(9505, 72)
+shape = SubResource("RectangleShape2D_2tj5b")
+
+[connection signal="body_entered" from="exit_level_2" to="Player" method="_on_exit_level_2_body_entered"]
 
 [editable path="Player"]
