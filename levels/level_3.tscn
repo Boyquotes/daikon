@@ -37,19 +37,20 @@ size = Vector2(580, 517)
 [node name="level_3" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1038, 777)
+position = Vector2(1024, 768)
 texture = ExtResource("1_0ngbx")
 
 [node name="Player" parent="." instance=ExtResource("2_3yeux")]
-position = Vector2(119, 241)
+position = Vector2(105, 232)
 
 [node name="blueberry" parent="." instance=ExtResource("3_vlau7")]
-position = Vector2(891, 117)
+position = Vector2(877, 108)
 
 [node name="blueberry2" parent="." instance=ExtResource("3_vlau7")]
-position = Vector2(695, 119)
+position = Vector2(681, 110)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-14, -9)
 collision_layer = 2
 collision_mask = 3
 
@@ -93,9 +94,10 @@ position = Vector2(792.75, 202.5)
 shape = SubResource("RectangleShape2D_tvbfy")
 
 [node name="blueberry3" parent="." instance=ExtResource("3_vlau7")]
-position = Vector2(1400, 587)
+position = Vector2(1386, 578)
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-14, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2340, 483)

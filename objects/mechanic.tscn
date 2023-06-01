@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://canlelm3tdg2l"]
+
+[ext_resource type="Texture2D" uid="uid://banqtej88s5jr" path="res://assets/mechanic/mechanic_1.png" id="1_rcwit"]
+[ext_resource type="Texture2D" uid="uid://r5tt0l6klkos" path="res://assets/mechanic/mechanic_2.png" id="2_ybigm"]
+[ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="3_768ar"]
+
+[sub_resource type="GDScript" id="GDScript_3rgvl"]
+script/source = "extends StaticBody2D
+
+
+@onready var text = get_node('Text')
+
+
+func _on_text_detection_area_body_entered(body):
+	if body.name == 'Player':
+		text.visible = true
+
+
+func _on_text_detection_area_body_exited(body):
+	if body.name == 'Player':
+		text.visible = false
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b16us"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rcwit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ybigm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2poiy"]
+radius = 51.0
+height = 164.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cqsh"]
+size = Vector2(374.25, 184)
+
+[sub_resource type="Animation" id="Animation_xinf3"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_fcgrp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0irrm"]
+_data = {
+"Idle": SubResource("Animation_xinf3"),
+"RESET": SubResource("Animation_fcgrp")
+}
+
+[node name="mechanic" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = SubResource("GDScript_3rgvl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, 2)
+scale = Vector2(0.123, 0.123)
+sprite_frames = SubResource("SpriteFrames_b16us")
+animation = &"Idle"
+frame = 1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 28)
+shape = SubResource("CapsuleShape2D_2poiy")
+
+[node name="Text Detection Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="Text Detection Shape" type="CollisionShape2D" parent="Text Detection Area"]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_0cqsh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0irrm")
+}
+
+[node name="Text" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -200.0
+offset_right = 130.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_768ar")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Text Here"
+
+[connection signal="body_entered" from="Text Detection Area" to="." method="_on_text_detection_area_body_entered"]
+[connection signal="body_exited" from="Text Detection Area" to="." method="_on_text_detection_area_body_exited"]

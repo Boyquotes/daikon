@@ -46,12 +46,6 @@ texture = ExtResource("1_db2tv")
 position = Vector2(5795, 1051)
 shape = SubResource("RectangleShape2D_qfkn2")
 
-[node name="Panel" type="Panel" parent="Ground/Ground Collision3"]
-offset_left = -598.0
-offset_top = -509.0
-offset_right = 634.0
-offset_bottom = 514.0
-
 [node name="Player" parent="." instance=ExtResource("1_gglu5")]
 position = Vector2(105, 309)
 

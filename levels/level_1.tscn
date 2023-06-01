@@ -101,10 +101,10 @@ shape = SubResource("RectangleShape2D_au6kf")
 position = Vector2(959, 966)
 
 [node name="Blueberry" parent="." instance=ExtResource("4_xyrtp")]
-position = Vector2(1224, 865)
+position = Vector2(789, 878)
 
 [node name="Blueberry 2" parent="." instance=ExtResource("4_xyrtp")]
-position = Vector2(725, 861)
+position = Vector2(476, 938)
 
 [node name="Fallzone" type="Area2D" parent="."]
 

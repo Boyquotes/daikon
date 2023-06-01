@@ -53,11 +53,12 @@ size = Vector2(4087, 854)
 [node name="level_4" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1041.5, 721.5)
+position = Vector2(1033.5, 716.5)
 scale = Vector2(1.00928, 0.932943)
 texture = ExtResource("1_n1g2j")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-8, -5)
 collision_layer = 2
 collision_mask = 3
 
@@ -121,9 +122,10 @@ position = Vector2(1318, 1309)
 shape = SubResource("RectangleShape2D_k1kwf")
 
 [node name="Player" parent="." instance=ExtResource("2_6at71")]
-position = Vector2(109, 1117)
+position = Vector2(101, 1112)
 
 [node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(-8, -5)
 collision_layer = 2
 collision_mask = 3
 
@@ -132,7 +134,7 @@ position = Vector2(943, 1862)
 shape = SubResource("RectangleShape2D_x04hp")
 
 [node name="scale" parent="." instance=ExtResource("3_8xfk2")]
-position = Vector2(1124, 1210)
+position = Vector2(1116, 1205)
 
 [node name="cookie" parent="." instance=ExtResource("4_jysd2")]
-position = Vector2(612, 1307)
+position = Vector2(604, 1302)
