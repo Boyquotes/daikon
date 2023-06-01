@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgywgftbybgk5"]
+
+[ext_resource type="Texture2D" uid="uid://ca0iuik6ap8q7" path="res://assets/bg/intro_pt_2.png" id="1_dno7y"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="2_y5m3r"]
+[ext_resource type="PackedScene" uid="uid://bskoxr0wa0nti" path="res://objects/cookie.tscn" id="3_i27na"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtiwl"]
+size = Vector2(508.5, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2am6a"]
+size = Vector2(30.75, 195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewvf0"]
+size = Vector2(260.5, 19.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmlvi"]
+size = Vector2(25.5, 186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8tby"]
+size = Vector2(1324, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41562"]
+size = Vector2(819.5, 25.5)
+
+[node name="intro_pt_2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1030, 771)
+texture = ExtResource("1_dno7y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(260.75, 444.25)
+shape = SubResource("RectangleShape2D_dtiwl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(497.625, 534.5)
+shape = SubResource("RectangleShape2D_2am6a")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(616.75, 613.25)
+shape = SubResource("RectangleShape2D_ewvf0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(733.25, 530)
+shape = SubResource("RectangleShape2D_vmlvi")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1398, 451.25)
+shape = SubResource("RectangleShape2D_q8tby")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1639.25, 660.25)
+shape = SubResource("RectangleShape2D_41562")
+
+[node name="Player" parent="." instance=ExtResource("2_y5m3r")]
+position = Vector2(95, 314)
+
+[node name="cookie" parent="." instance=ExtResource("3_i27na")]
+position = Vector2(369, 293)

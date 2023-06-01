@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://cmdjpbvxlxh3w"]
 
-[ext_resource type="Texture2D" uid="uid://bodr6w5mfamrf" path="res://assets/bg/level_1.png" id="1_d2743"]
+[ext_resource type="Texture2D" uid="uid://y2witc6kjhdx" path="res://assets/bg/scene1_1.png" id="1_27q4p"]
 [ext_resource type="PackedScene" uid="uid://boelrqhen7t2i" path="res://objects/scale.tscn" id="1_i6uy6"]
-[ext_resource type="PackedScene" uid="uid://dw0j7f8ahtsuk" path="res://player.tscn" id="2_oh5j1"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="2_oh5j1"]
 [ext_resource type="PackedScene" uid="uid://c5u5ffkmknhpw" path="res://objects/blueberry.tscn" id="4_xyrtp"]
 
 [sub_resource type="GDScript" id="GDScript_x2ql8"]
@@ -23,22 +23,22 @@ func _on_next_body_entered(body):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri0y6"]
-size = Vector2(547.75, 22)
+size = Vector2(2056.88, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efiby"]
 size = Vector2(25, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_660v5"]
-size = Vector2(1052.88, 22)
+size = Vector2(38, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnsti"]
-size = Vector2(340, 22)
+size = Vector2(472, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qmqv"]
-size = Vector2(340, 22)
+size = Vector2(505, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yps8"]
-size = Vector2(340, 22)
+size = Vector2(411, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au6kf"]
 size = Vector2(401, 22)
@@ -60,17 +60,17 @@ script = SubResource("GDScript_x2ql8")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(1024, 768)
-texture = ExtResource("1_d2743")
+texture = ExtResource("1_27q4p")
 
 [node name="Player" parent="." instance=ExtResource("2_oh5j1")]
-position = Vector2(270, 1170)
+position = Vector2(108, 898)
 
 [node name="Shelves" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
 [node name="Shelf 1" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(274.125, 1285)
+position = Vector2(1026.56, 1233)
 shape = SubResource("RectangleShape2D_ri0y6")
 
 [node name="Shelf 2" type="CollisionShape2D" parent="Shelves"]
@@ -78,19 +78,19 @@ position = Vector2(535.5, 1243)
 shape = SubResource("RectangleShape2D_efiby")
 
 [node name="Shelf 3" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(1184.56, 1295)
+position = Vector2(958, 1056)
 shape = SubResource("RectangleShape2D_660v5")
 
 [node name="Shelf 4" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(1543, 975)
+position = Vector2(955, 1115)
 shape = SubResource("RectangleShape2D_hnsti")
 
 [node name="Shelf 5" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(1118, 821)
+position = Vector2(268.5, 1027)
 shape = SubResource("RectangleShape2D_5qmqv")
 
 [node name="Shelf 6" type="CollisionShape2D" parent="Shelves"]
-position = Vector2(1610, 688)
+position = Vector2(1523.5, 646)
 shape = SubResource("RectangleShape2D_6yps8")
 
 [node name="Shelf 7" type="CollisionShape2D" parent="Shelves"]
@@ -98,13 +98,13 @@ position = Vector2(1847.5, 533)
 shape = SubResource("RectangleShape2D_au6kf")
 
 [node name="Scale" parent="." instance=ExtResource("1_i6uy6")]
-position = Vector2(1005, 1129)
+position = Vector2(959, 966)
 
 [node name="Blueberry" parent="." instance=ExtResource("4_xyrtp")]
-position = Vector2(1164, 1020)
+position = Vector2(1224, 865)
 
 [node name="Blueberry 2" parent="." instance=ExtResource("4_xyrtp")]
-position = Vector2(841, 1042)
+position = Vector2(725, 861)
 
 [node name="Fallzone" type="Area2D" parent="."]
 

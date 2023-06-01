@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bskoxr0wa0nti"]
+
+[ext_resource type="Texture2D" uid="uid://bbb85s01dl4kf" path="res://assets/objects/cookie.png" id="1_wx5vk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amus3"]
+radius = 95.2575
+
+[node name="cookie" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_amus3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.00006, 3)
+scale = Vector2(0.399414, 0.381348)
+texture = ExtResource("1_wx5vk")

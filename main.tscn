@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0l7pupe38tdo"]
+[gd_scene load_steps=4 format=3 uid="uid://bjyldghoet6an"]
 
-[ext_resource type="PackedScene" uid="uid://c0xvo8vrljipg" path="res://bg.tscn" id="1_lgqd5"]
+[ext_resource type="PackedScene" path="res://bg.tscn" id="1_lgqd5"]
 [ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_04q6w"]
 
 [sub_resource type="GDScript" id="GDScript_dneka"]
@@ -11,7 +11,7 @@ script/source = "extends Node2D
 
 
 func _on_start_pressed():
-	tree.change_scene_to_file('res://levels/level_1.tscn')
+	tree.change_scene_to_file('res://levels/intro_pt_2.tscn')
 
 
 func _on_quit_pressed():
