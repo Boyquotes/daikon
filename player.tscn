@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://d12v1rqhcdog7"]
+[gd_scene load_steps=20 format=3 uid="uid://d12v1rqhcdog7"]
 
+[ext_resource type="PackedScene" uid="uid://dlg3fv873nh8m" path="res://hud.tscn" id="1_f8iny"]
 [ext_resource type="Texture2D" uid="uid://dmyy3hniip87i" path="res://assets/daikon/idle/idle1.png" id="1_fcj0l"]
 [ext_resource type="Texture2D" uid="uid://cmwhsna1lqk47" path="res://assets/daikon/jump/jump2.png" id="1_jwkjm"]
 [ext_resource type="Texture2D" uid="uid://ii5wvxye3bj5" path="res://assets/daikon/idle/idle2.png" id="2_ltiqu"]
@@ -397,6 +398,8 @@ max_contacts_reported = 8
 contact_monitor = true
 lock_rotation = true
 script = SubResource("GDScript_qccbp")
+
+[node name="HUD" parent="." instance=ExtResource("1_f8iny")]
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
