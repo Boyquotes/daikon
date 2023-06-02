@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://di4ka2a80r21f"]
+
+[ext_resource type="Texture2D" uid="uid://bdb1b4dpbrhd" path="res://assets/intro_story/247G_Intro_02.png" id="1_tyy4f"]
+[ext_resource type="Script" path="res://levels/story_02.gd" id="2_fikpb"]
+[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="2_rrbtw"]
+
+[node name="story_02" type="Sprite2D"]
+position = Vector2(1441.94, 754.5)
+scale = Vector2(1.38135, 1.38135)
+texture = ExtResource("1_tyy4f")
+script = ExtResource("2_fikpb")
+
+[node name="Prev" type="Button" parent="."]
+offset_left = -1038.8
+offset_top = -542.587
+offset_right = -814.797
+offset_bottom = -389.587
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_rrbtw")
+theme_override_font_sizes/font_size = 100
+text = "Prev"
+
+[node name="Next" type="Button" parent="."]
+offset_left = 815.917
+offset_top = -538.967
+offset_right = 1039.92
+offset_bottom = -385.967
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_rrbtw")
+theme_override_font_sizes/font_size = 100
+text = "Next"
+
+[connection signal="pressed" from="Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

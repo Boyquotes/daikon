@@ -74,7 +74,6 @@ shape = SubResource("RectangleShape2D_wvqwq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-42, 755)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v8j7j")
 
 [node name="Floor" type="StaticBody2D" parent="."]

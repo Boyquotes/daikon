@@ -91,7 +91,6 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(-0.164505, -8.20535)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1yqmu")
 
 [editable path="Player"]
