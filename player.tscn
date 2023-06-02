@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d12v1rqhcdog7"]
+[gd_scene load_steps=19 format=3 uid="uid://d12v1rqhcdog7"]
 
 [ext_resource type="Texture2D" uid="uid://dmyy3hniip87i" path="res://assets/daikon/idle/idle1.png" id="1_fcj0l"]
 [ext_resource type="Texture2D" uid="uid://cmwhsna1lqk47" path="res://assets/daikon/jump/jump2.png" id="1_jwkjm"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://pf51odaobxdx" path="res://assets/daikon/run/run1.png" id="5_1qw45"]
 [ext_resource type="Texture2D" uid="uid://melgjue81m61" path="res://assets/daikon/run/run2.png" id="6_i0ead"]
 [ext_resource type="Texture2D" uid="uid://bqjed82k18xaf" path="res://assets/daikon/run/run3.png" id="7_60jdm"]
+[ext_resource type="AudioStream" uid="uid://vqm31h3e0ya8" path="res://assets/sounds/jump.wav" id="8_caaxe"]
+[ext_resource type="AudioStream" uid="uid://dqhe8gs2qu8nj" path="res://assets/sounds/step.wav" id="9_fjrgc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q3ltp"]
 friction = 0.0
@@ -34,6 +36,9 @@ var sprint_time: float = 0
 
 @onready var sprite := get_node('Sprites')
 @onready var animation_player := get_node('Animation')
+
+@onready var jump_sound := get_node('Sound/Jump')
+@onready var walk_sound := get_node('Sound/Walk')
 
 
 func _can_jump() -> bool:
@@ -93,6 +98,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	# Check jump.
 	if jumping < 1 and jump:
+		jump_sound.play()
 		velocity.y += -JUMP_VELOCITY / (1 + jumping)
 		jumping += 1
 		new_anim = 'jump'
@@ -118,6 +124,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		elif velocity.x == 0:
 			new_anim = 'Idle'
 		else:
+			if not walk_sound.playing:
+				walk_sound.play()
 			new_anim = 'Run'
 	else:
 		# Process logic when the character is in the air.
@@ -414,3 +422,14 @@ libraries = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(2.46, 2.46)
 polygon = PackedVector2Array(4, -21, -5, -20, -11, -17, -16, -9, -18, 1, -19, 15, -18, 25, -15, 30, -11, 33, -6, 35, -3, 40, 5, 41, 18, 31, 23, 18, 22, 3, 20, -9, 18, -15, 12, -19)
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("8_caaxe")
+volume_db = -6.0
+pitch_scale = 2.0
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("9_fjrgc")
+volume_db = 18.0

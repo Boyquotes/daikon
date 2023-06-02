@@ -109,7 +109,7 @@ position = Vector2(959, 966)
 position = Vector2(789, 878)
 
 [node name="Blueberry 2" parent="." instance=ExtResource("4_xyrtp")]
-position = Vector2(476, 938)
+position = Vector2(556, 947)
 
 [node name="Fallzone" type="Area2D" parent="."]
 

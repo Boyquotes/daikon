@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://byuw3dux2p0gw"]
+[gd_scene load_steps=38 format=3 uid="uid://dfflodpn4c8yg"]
 
 [ext_resource type="Script" path="res://levels/maze.gd" id="1_4nc7u"]
 [ext_resource type="Texture2D" uid="uid://dqefxw3tffasn" path="res://assets/bg/maze_1.png" id="1_al2fq"]

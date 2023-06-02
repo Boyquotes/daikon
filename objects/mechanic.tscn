@@ -11,6 +11,10 @@ script/source = "extends StaticBody2D
 @onready var text = get_node('Text')
 
 
+func _ready():
+	get_node('AnimationPlayer').play('Idle')
+
+
 func _on_text_detection_area_body_entered(body):
 	if body.name == 'Player':
 		text.visible = true

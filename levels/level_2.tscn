@@ -65,7 +65,7 @@ position = Vector2(1104, 1073)
 [node name="exit_level_2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit_level_2"]
-position = Vector2(6832, 316)
+position = Vector2(6895, 456)
 shape = SubResource("RectangleShape2D_2tj5b")
 
 [node name="bg2" type="Sprite2D" parent="."]
