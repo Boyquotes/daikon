@@ -103,6 +103,9 @@ flip_h = true
 [node name="Collision" parent="mechanic" index="1"]
 position = Vector2(-14, 27)
 
+[node name="Text" parent="mechanic" index="4"]
+text = "Get to the spaceship!"
+
 [node name="Sound" parent="." instance=ExtResource("4_n6qh0")]
 
 [connection signal="body_entered" from="exit_intro_1" to="Player" method="_on_exit_intro_1_body_entered"]

@@ -4,17 +4,19 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iijm6"]
 radius = 25.7143
-height = 61.7143
+height = 160.0
 
 [node name="carrot" type="RigidBody2D"]
+rotation = 1.55623
 scale = Vector2(1.75, 1.75)
 collision_layer = 2
 collision_mask = 3
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cjbgs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.14286, 76)
+position = Vector2(-2.28571, 27.4286)
 shape = SubResource("CapsuleShape2D_iijm6")
