@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlg3fv873nh8m"]
+
+[ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="1_f73rp"]
+
+[sub_resource type="GDScript" id="GDScript_qt57d"]
+script/source = "extends CanvasLayer
+
+
+@onready var time = get_node('Time')
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Hud.time_started = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	time.set_text(Hud.time_elapsed)
+"
+
+[node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_qt57d")
+
+[node name="Time" type="Label" parent="."]
+offset_left = 2300.0
+offset_top = -1.0
+offset_right = 2506.0
+offset_bottom = 133.0
+theme = ExtResource("1_f73rp")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 90
+text = "0:00"
