@@ -7,7 +7,17 @@
 script/source = "extends AudioStreamPlayer
 
 
-@onready var audio = get_node('.')
+@onready var audio := get_node('.')
+var position := 0.0
+
+
+func play_audio():
+	audio.play(position)
+
+
+func stop_audio():
+	position = audio.get_playback_position()
+	audio.stop()
 
 
 func _on_finished():
@@ -29,6 +39,7 @@ func _on_finished():
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_1ys0p")
+volume_db = -24.0
 script = SubResource("GDScript_3glbc")
 
 [node name="Intro" type="AudioStreamPlayer" parent="."]

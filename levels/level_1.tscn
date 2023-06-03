@@ -9,7 +9,12 @@
 script/source = "extends Node2D
 
 
-	
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Hud.current_scene = scene_file_path
+	Sound.get_node('BGM').audio.play_audio()
+
+
 func _on_fallzone_body_entered(body):
 	if body.name == 'Player':
 		get_tree().change_scene_to_file('res://levels/level_1.tscn')
@@ -18,7 +23,10 @@ func _on_fallzone_body_entered(body):
 func _on_next_body_entered(body):
 	if body.name == 'Player':
 		get_tree().change_scene_to_file('res://levels/level_2.tscn')
-		
+
+
+func _exit_tree():
+	Sound.get_node('BGM').stop_audio()
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ri0y6"]

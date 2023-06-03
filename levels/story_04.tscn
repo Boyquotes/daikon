@@ -1,14 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://xbgxd4m6grfd"]
 
 [ext_resource type="Texture2D" uid="uid://bjbb5orcxx4yb" path="res://assets/intro_story/247G_Intro_04.jpeg" id="1_yw1be"]
-[ext_resource type="Script" path="res://levels/story_04.gd" id="2_xriyr"]
 [ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="3_xgpld"]
+
+[sub_resource type="GDScript" id="GDScript_57o44"]
+script/source = "extends Sprite2D
+
+
+func _on_prev_pressed():
+	get_tree().change_scene_to_file(\"res://levels/story_03.tscn\")
+
+
+func _on_next_pressed():
+	get_tree().change_scene_to_file(\"res://levels/story_05.tscn\")
+"
 
 [node name="story_04" type="Sprite2D"]
 position = Vector2(1431, 879)
 scale = Vector2(2.8099, 2.8099)
 texture = ExtResource("1_yw1be")
-script = ExtResource("2_xriyr")
+script = SubResource("GDScript_57o44")
 
 [node name="Prev" type="Button" parent="."]
 offset_left = -507.136

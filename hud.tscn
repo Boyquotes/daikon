@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlg3fv873nh8m"]
+[gd_scene load_steps=8 format=3 uid="uid://dlg3fv873nh8m"]
 
 [ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="1_f73rp"]
+[ext_resource type="Texture2D" uid="uid://ydgp2chdfh4m" path="res://assets/hud/pause.png" id="2_ams3y"]
 
 [sub_resource type="GDScript" id="GDScript_qt57d"]
 script/source = "extends CanvasLayer
 
 
 @onready var time = get_node('Time')
+@onready var pause = get_node('Pause Menu')
+@onready var tree = get_tree()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,10 +20,116 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time.set_text(Hud.time_elapsed)
+
+
+func _on_button_toggled(button_pressed):
+	Hud.paused = button_pressed
+	pause.visible = button_pressed
+
+
+func _on_continue_pressed():
+	Hud.paused = false
+	pause.visible = false
+
+
+func _on_restart_pressed():
+	Hud.paused = false
+	tree.change_scene_to_file(Hud.current_scene)
+
+
+func _on_menu_pressed():
+	tree.change_scene_to_file('res://main.tscn')
 "
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nri2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5dhi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lju08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2754i"]
 
 [node name="HUD" type="CanvasLayer"]
 script = SubResource("GDScript_qt57d")
+
+[node name="Pause Menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="Pause Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause Text" type="Label" parent="Pause Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.5
+offset_top = -364.5
+offset_right = 303.5
+offset_bottom = -12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f73rp")
+text = "Paused"
+
+[node name="Button List" type="ItemList" parent="Pause Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = 100.0
+offset_right = 375.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Continue" type="Button" parent="Pause Menu/Button List"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 131.0
+grow_horizontal = 2
+theme = ExtResource("1_f73rp")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6nri2")
+text = "Continue"
+
+[node name="Restart" type="Button" parent="Pause Menu/Button List"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -65.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f73rp")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n5dhi")
+text = "Restart"
+
+[node name="Menu" type="Button" parent="Pause Menu/Button List"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -131.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_f73rp")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6nri2")
+text = "Menu"
 
 [node name="Time" type="Label" parent="."]
 offset_left = 2300.0
@@ -35,3 +144,29 @@ theme_override_constants/outline_size = 20
 theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 90
 text = "0:00"
+
+[node name="Pause" type="Sprite2D" parent="."]
+position = Vector2(2750, 250)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ams3y")
+
+[node name="Button" type="Button" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = -275.0
+offset_right = -313.0
+offset_bottom = -275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f73rp")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lju08")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2754i")
+toggle_mode = true
+
+[connection signal="pressed" from="Pause Menu/Button List/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Pause Menu/Button List/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Pause Menu/Button List/Menu" to="." method="_on_menu_pressed"]
+[connection signal="toggled" from="Pause/Button" to="." method="_on_button_toggled"]

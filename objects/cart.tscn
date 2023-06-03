@@ -18,6 +18,7 @@ position = Vector2(-31, 4)
 polygon = PackedVector2Array(-304, 337, -247, 101, -282, -290, -249, -297, -190, -1, -198, 115, 333, 65, 326, -180, 374, -187, 378, 87, -209, 162, -234, 284, 356, 265, 349, 340)
 
 [node name="Back Wheel Collision" type="RigidBody2D" parent="."]
+position = Vector2(-26, 2)
 collision_layer = 2
 collision_mask = 3
 
@@ -30,6 +31,7 @@ offset_left = -21.0
 offset_top = -55.0
 offset_right = 19.0
 offset_bottom = 54.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Front Wheel Collision" type="RigidBody2D" parent="."]
 collision_layer = 2
@@ -44,9 +46,10 @@ offset_left = -21.0
 offset_top = -55.0
 offset_right = 19.0
 offset_bottom = 54.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Back Joint" type="PinJoint2D" parent="."]
-position = Vector2(-246, 414)
+position = Vector2(-272, 416)
 node_a = NodePath("..")
 node_b = NodePath("../Back Wheel Collision")
 

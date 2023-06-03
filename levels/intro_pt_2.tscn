@@ -1,10 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgywgftbybgk5"]
+[gd_scene load_steps=14 format=3 uid="uid://dce2ddfra8dau"]
 
-[ext_resource type="Script" path="res://levels/intro_pt_2.gd" id="1_3ufro"]
 [ext_resource type="Texture2D" uid="uid://ca0iuik6ap8q7" path="res://assets/bg/intro_pt_2.png" id="1_dno7y"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_y5m3r"]
 [ext_resource type="PackedScene" uid="uid://bskoxr0wa0nti" path="res://objects/cookie.tscn" id="3_i27na"]
-[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://sound.tscn" id="5_8gs48"]
+[ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://global/sound.tscn" id="5_8gs48"]
+
+[sub_resource type="GDScript" id="GDScript_hl1gr"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Hud.current_scene = scene_file_path
+	Sound.get_node('BGM').audio.play_audio()
+
+
+func _exit_tree():
+	Sound.get_node('BGM').stop_audio()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtiwl"]
 size = Vector2(508.5, 29.5)
@@ -31,7 +44,7 @@ size = Vector2(823, 621)
 size = Vector2(446, 23)
 
 [node name="intro_pt_2" type="Node2D"]
-script = ExtResource("1_3ufro")
+script = SubResource("GDScript_hl1gr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1030, 771)
