@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhbcsc1u5258q"]
+[gd_scene load_steps=9 format=3 uid="uid://bhbcsc1u5258q"]
 
 [ext_resource type="Texture2D" uid="uid://cha5u1qxkrekf" path="res://assets/intro_story/247G_Intro_07.jpeg" id="1_mr8ep"]
-[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="2_20wol"]
+[ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_h740b"]
 
 [sub_resource type="GDScript" id="GDScript_e7oxf"]
-script/source = "extends Sprite2D
+script/source = "extends CanvasLayer
 
 
 func _on_prev_pressed():
@@ -15,32 +15,68 @@ func _on_next_pressed():
 	get_tree().change_scene_to_file(\"res://levels/intro_pt_1.tscn\")
 "
 
-[node name="story_07" type="Sprite2D"]
-position = Vector2(1442, 731)
-scale = Vector2(2.8112, 2.8112)
-texture = ExtResource("1_mr8ep")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_el330"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fylnl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ysqvd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_boo8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6143s"]
+
+[node name="story_07" type="CanvasLayer"]
 script = SubResource("GDScript_e7oxf")
 
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="247gIntro07" type="Sprite2D" parent="CenterContainer"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_mr8ep")
+
 [node name="Prev" type="Button" parent="."]
-offset_left = -509.036
-offset_top = -256.829
-offset_right = -285.036
-offset_bottom = -103.829
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("2_20wol")
-theme_override_font_sizes/font_size = 80
-text = "Prev"
+offset_right = 224.0
+offset_bottom = 153.0
+size_flags_horizontal = 8
+theme = ExtResource("2_h740b")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_el330")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fylnl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ysqvd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_boo8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6143s")
+text = "Back"
 
 [node name="Next" type="Button" parent="."]
-offset_left = 284.588
-offset_top = -259.676
-offset_right = 508.588
-offset_bottom = -106.676
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("2_20wol")
-theme_override_font_sizes/font_size = 80
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_bottom = 153.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme = ExtResource("2_h740b")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxEmpty_el330")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fylnl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ysqvd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_boo8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6143s")
 text = "Next"
 
 [connection signal="pressed" from="Prev" to="." method="_on_prev_pressed"]
