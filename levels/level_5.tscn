@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://3wm33pegygnh"]
+[gd_scene load_steps=13 format=3 uid="uid://3wm33pegygnh"]
 
+[ext_resource type="Texture2D" uid="uid://hp7alqw2fqn6" path="res://assets/bg/temp_level_5_bg.png" id="1_oaw74"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
 [ext_resource type="PackedScene" uid="uid://704fpayvqb61" path="res://objects/carrot.tscn" id="3_3t0is"]
 [ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://global/sound.tscn" id="4_yycsc"]
@@ -23,43 +24,55 @@ func _exit_tree():
 size = Vector2(833, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvqwq"]
-size = Vector2(1085, 20)
+size = Vector2(482, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5il5q"]
+size = Vector2(389, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvjcg"]
+size = Vector2(650, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8j7j"]
 size = Vector2(1813.84, 64.9261)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
-size = Vector2(200.229, 18.7178)
+size = Vector2(221.735, 18.7178)
 
 [node name="level_5" type="Node2D"]
 script = SubResource("GDScript_117ov")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1677.08, 891.753)
+rotation = 1.5708
+scale = Vector2(0.932761, 1.34326)
+texture = ExtResource("1_oaw74")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
 
 [node name="Player" parent="." instance=ExtResource("2_8kpm8")]
-position = Vector2(115, 1133)
+position = Vector2(1129, 541)
 metadata/_edit_group_ = true
 
 [node name="Camera" parent="Player" index="1"]
 limit_right = 4000
 
 [node name="carrot" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(636, 1256)
+position = Vector2(982, 783)
 gravity_scale = 0.0
 
 [node name="carrot2" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(929, 1095)
+position = Vector2(-1148, 768)
 rotation = 1.58548
 gravity_scale = 0.0
 
 [node name="carrot3" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1232, 930)
+position = Vector2(532, 1154)
 gravity_scale = 0.0
 
 [node name="carrot4" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1628, 798)
+position = Vector2(757, 962)
 gravity_scale = 0.0
 
 [node name="Shelf_1" type="StaticBody2D" parent="."]
@@ -73,19 +86,44 @@ position = Vector2(553.5, 1.5)
 shape = SubResource("RectangleShape2D_opx0m")
 
 [node name="Shelf_2" type="StaticBody2D" parent="."]
-position = Vector2(1935, 780)
+position = Vector2(1665, 885)
 collision_layer = 2
 collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_2"]
-position = Vector2(532.5, 0)
+position = Vector2(507, -3)
 shape = SubResource("RectangleShape2D_wvqwq")
+
+[node name="Shelf_3" type="StaticBody2D" parent="."]
+position = Vector2(2883, 689)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_3"]
+position = Vector2(13.5, 4.5)
+shape = SubResource("RectangleShape2D_5il5q")
+
+[node name="Shelf_4" type="StaticBody2D" parent="."]
+position = Vector2(1125, 670)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_4"]
+position = Vector2(315, 28)
+shape = SubResource("RectangleShape2D_fvjcg")
 
 [node name="Sound" parent="." instance=ExtResource("4_yycsc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-42, 755)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_v8j7j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(3239, 870)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_v8j7j")
 
@@ -96,31 +134,47 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(0.527756, -2.15838)
+position = Vector2(11.2806, -2.15838)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1yqmu")
 
 [node name="carrot6" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(2106, 318)
+position = Vector2(1205, 212)
 rotation = -0.0202969
 gravity_scale = 0.0
 
 [node name="carrot7" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(2248, 313)
+position = Vector2(1347, 207)
 rotation = -0.00717044
 gravity_scale = 0.0
 
 [node name="carrot8" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(2532, 313)
+position = Vector2(1631, 207)
 rotation = -0.00717044
 gravity_scale = 0.0
 
 [node name="carrot9" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(2390, 313)
+position = Vector2(1489, 207)
+rotation = -0.00717044
+gravity_scale = 0.0
+
+[node name="carrot10" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1780, 268)
+rotation = -0.00717044
+gravity_scale = 0.0
+
+[node name="carrot11" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1907, 385)
+rotation = -0.00717044
+gravity_scale = 0.0
+
+[node name="carrot12" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(2034, 488)
 rotation = -0.00717044
 gravity_scale = 0.0
 
 [node name="glass_jar" parent="." instance=ExtResource("5_738py")]
-position = Vector2(2193, 659)
+position = Vector2(1342, 573)
 collision_layer = 2
 collision_mask = 3
 
