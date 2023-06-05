@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dce2ddfra8dau"]
+[gd_scene load_steps=15 format=3 uid="uid://dce2ddfra8dau"]
 
 [ext_resource type="Texture2D" uid="uid://ca0iuik6ap8q7" path="res://assets/bg/intro_pt_2.png" id="1_dno7y"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_y5m3r"]
 [ext_resource type="PackedScene" uid="uid://bskoxr0wa0nti" path="res://objects/cookie.tscn" id="3_i27na"]
 [ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://global/sound.tscn" id="5_8gs48"]
+[ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="5_yb2d1"]
 
 [sub_resource type="GDScript" id="GDScript_hl1gr"]
 script/source = "extends Node2D
@@ -49,6 +50,20 @@ script = SubResource("GDScript_hl1gr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1030, 771)
 texture = ExtResource("1_dno7y")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1152.0
+offset_top = 176.0
+offset_right = 1753.0
+offset_bottom = 310.0
+theme = ExtResource("5_yb2d1")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 90
+text = "Shift to sprint!"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3wm33pegygnh"]
+[gd_scene load_steps=14 format=3 uid="uid://3wm33pegygnh"]
 
 [ext_resource type="Texture2D" uid="uid://hp7alqw2fqn6" path="res://assets/bg/temp_level_5_bg.png" id="1_oaw74"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
@@ -13,11 +13,16 @@ script/source = "extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Hud.current_scene = scene_file_path
-	Sound.get_node('BGM').audio.play_audio()
+	Sound.get_node('BGM').play_audio()
 
 
 func _exit_tree():
 	Sound.get_node('BGM').stop_audio()
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://end.tscn\")
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opx0m"]
@@ -37,6 +42,9 @@ size = Vector2(1813.84, 64.9261)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
 size = Vector2(221.735, 18.7178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll4id"]
+size = Vector2(659, 1543.5)
 
 [node name="level_5" type="Node2D"]
 script = SubResource("GDScript_117ov")
@@ -176,5 +184,13 @@ gravity_scale = 0.0
 position = Vector2(1342, 520)
 collision_layer = 2
 collision_mask = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3473, 744.75)
+shape = SubResource("RectangleShape2D_ll4id")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
 [editable path="Player"]

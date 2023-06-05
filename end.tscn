@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6od3mlavtuq"]
+
+[ext_resource type="PackedScene" uid="uid://b0q0hqrlb85q1" path="res://bg.tscn" id="1_0gw7f"]
+[ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_g44rm"]
+
+[sub_resource type="GDScript" id="GDScript_iitk0"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Hud.time_started = false
+	get_node('.').set_text(Hud.time_elapsed)
+"
+
+[sub_resource type="GDScript" id="GDScript_k0i48"]
+script/source = "extends Button
+
+
+@onready var tree = get_tree()
+
+
+func _on_pressed():
+	tree.change_scene_to_file('res://main.tscn')
+"
+
+[node name="End" type="Node2D"]
+
+[node name="Bg" parent="." instance=ExtResource("1_0gw7f")]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 2880.0
+offset_bottom = 704.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_g44rm")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 30
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 30
+text = "Thanks for Playing
+Our Slice!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label 2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 2880.0
+offset_bottom = 1750.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_g44rm")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Your Final Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 2880.0
+offset_bottom = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_g44rm")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 90
+text = "Your Final Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_iitk0")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 1200.0
+offset_right = 1940.0
+offset_bottom = 1450.0
+theme = ExtResource("2_g44rm")
+theme_override_font_sizes/font_size = 90
+text = "Back to Main Menu"
+script = SubResource("GDScript_k0i48")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
