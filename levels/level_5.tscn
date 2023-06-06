@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://3wm33pegygnh"]
+[gd_scene load_steps=25 format=3 uid="uid://3wm33pegygnh"]
 
 [ext_resource type="Texture2D" uid="uid://bphb1yen6uqa0" path="res://assets/bg/finalbg1.png" id="1_dx50p"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://global/sound.tscn" id="4_yycsc"]
 [ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_738py"]
 [ext_resource type="Texture2D" uid="uid://uta3qouc0pqj" path="res://assets/bg/finalbg2.png" id="7_oiqnb"]
-[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="8_d6yvf"]
-[ext_resource type="Texture2D" uid="uid://banqtej88s5jr" path="res://assets/mechanic/mechanic_1.png" id="9_gg2qv"]
-[ext_resource type="Texture2D" uid="uid://r5tt0l6klkos" path="res://assets/mechanic/mechanic_2.png" id="10_t11lo"]
+[ext_resource type="PackedScene" uid="uid://canlelm3tdg2l" path="res://objects/mechanic.tscn" id="8_wbhvf"]
 
 [sub_resource type="GDScript" id="GDScript_117ov"]
 script/source = "extends Node2D
@@ -116,20 +114,6 @@ height = 210.321
 size = Vector2(659, 773)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gm03"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4lab3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_gg2qv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_t11lo")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}]
 
 [node name="level_5" type="Node2D"]
 script = SubResource("GDScript_117ov")
@@ -352,35 +336,19 @@ position = Vector2(1349, 523)
 collision_layer = 2
 collision_mask = 3
 
-[node name="carrot_warning" type="Label" parent="."]
-offset_left = 171.0
-offset_top = 378.0
-offset_right = 845.0
-offset_bottom = 662.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 7
-theme_override_constants/outline_size = 15
-theme_override_constants/shadow_outline_size = 15
-theme_override_fonts/font = ExtResource("8_d6yvf")
-theme_override_font_sizes/font_size = 60
-text = "Use the jar to protect yourself from the pointy carrots!"
-horizontal_alignment = 1
-autowrap_mode = 2
-clip_text = true
+[node name="mechanic" parent="." instance=ExtResource("8_wbhvf")]
+position = Vector2(263, 649)
 
-[node name="mechanic_level_5" type="StaticBody2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mechanic_level_5"]
-position = Vector2(129, 646)
-scale = Vector2(0.123, 0.123)
-sprite_frames = SubResource("SpriteFrames_4lab3")
-animation = &"Idle"
-frame = 1
-frame_progress = 0.820364
+[node name="AnimatedSprite2D" parent="mechanic" index="0"]
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="mechanic_level_5"]
+[node name="Text" parent="mechanic" index="4"]
+text = "Use the jar to 
+protext yourself
+from the
+dangerous
+carrots!"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="deadly_carrot_1/carrot_detection_1" to="." method="_on_carrot_detection_1_body_entered"]
 [connection signal="body_entered" from="deadly_carrot_2/carrot_detection_2" to="." method="_on_carrot_detection_2_body_entered"]
@@ -393,3 +361,4 @@ flip_h = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
 [editable path="Player"]
+[editable path="mechanic"]

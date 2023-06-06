@@ -77,6 +77,7 @@ theme_override_font_sizes/font_size = 120
 text = "Start"
 
 [node name="Credits" type="Button" parent="Button List"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_04q6w")
 theme_override_font_sizes/font_size = 120

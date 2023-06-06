@@ -72,6 +72,22 @@ theme_override_constants/shadow_outline_size = 15
 theme_override_font_sizes/font_size = 90
 text = "WASD to move!"
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 1091.0
+offset_top = 1114.0
+offset_right = 1692.0
+offset_bottom = 1248.0
+theme = ExtResource("5_0peld")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 60
+text = "Jump twice to double
+jump!"
+horizontal_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("2_0o7yb")]
 position = Vector2(100, 1308)
 
