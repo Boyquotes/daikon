@@ -34,19 +34,19 @@ size = Vector2(833, 23)
 size = Vector2(424, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5il5q"]
-size = Vector2(389, 49)
+size = Vector2(459, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvjcg"]
 size = Vector2(605, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8j7j"]
-size = Vector2(1813.84, 64.9261)
+size = Vector2(786.92, 64.9261)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
 size = Vector2(221.735, 18.7178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll4id"]
-size = Vector2(659, 1543.5)
+size = Vector2(659, 773)
 
 [node name="level_5" type="Node2D"]
 script = SubResource("GDScript_117ov")
@@ -117,12 +117,12 @@ collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_3"]
-position = Vector2(13.5, 4.5)
+position = Vector2(48.5, 4.5)
 shape = SubResource("RectangleShape2D_5il5q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shelf_3"]
-position = Vector2(12, 1.50002)
-scale = Vector2(1.9598, 2.29412)
+position = Vector2(49.9999, 1.50002)
+scale = Vector2(2.34171, 2.29412)
 texture = ExtResource("4_14tpb")
 
 [node name="Shelf_4" type="StaticBody2D" parent="."]
@@ -148,7 +148,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_v8j7j")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(3239, 870)
+position = Vector2(3239, 356.54)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_v8j7j")
 
@@ -205,7 +205,7 @@ collision_mask = 3
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3473, 744.75)
+position = Vector2(3473, 359.5)
 shape = SubResource("RectangleShape2D_ll4id")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
