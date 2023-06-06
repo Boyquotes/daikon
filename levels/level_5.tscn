@@ -161,7 +161,6 @@ gravity_scale = 0.0
 
 [node name="carrot_step_3" parent="." instance=ExtResource("3_3t0is")]
 position = Vector2(982, 783)
-scale = Vector2(1.75, 1.75)
 gravity_scale = 0.0
 
 [node name="Shelf_1" type="StaticBody2D" parent="."]
