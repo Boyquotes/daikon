@@ -342,12 +342,18 @@ position = Vector2(263, 649)
 [node name="AnimatedSprite2D" parent="mechanic" index="0"]
 flip_h = true
 
+[node name="Text Detection Shape" parent="mechanic/Text Detection Area" index="0"]
+position = Vector2(-10.5, 37.5)
+
 [node name="Text" parent="mechanic" index="4"]
-text = "Use the jar to 
-protext yourself
-from the
-dangerous
-carrots!"
+visible = true
+offset_left = -78.0
+offset_top = -282.0
+offset_right = 741.0
+offset_bottom = 8.0
+text = "Use the jar to protect 
+yourself from the
+dangerous carrots!"
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="deadly_carrot_1/carrot_detection_1" to="." method="_on_carrot_detection_1_body_entered"]
