@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3wm33pegygnh"]
+[gd_scene load_steps=17 format=3 uid="uid://3wm33pegygnh"]
 
 [ext_resource type="Texture2D" uid="uid://bphb1yen6uqa0" path="res://assets/bg/finalbg1.png" id="1_dx50p"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
@@ -28,25 +28,27 @@ func _on_area_2d_body_entered(body):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opx0m"]
-size = Vector2(833, 23)
+size = Vector2(1087, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvqwq"]
 size = Vector2(424, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5il5q"]
-size = Vector2(459, 49)
+size = Vector2(461, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvjcg"]
 size = Vector2(605, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8j7j"]
-size = Vector2(786.92, 64.9261)
+size = Vector2(1813.84, 64.9261)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
-size = Vector2(221.735, 18.7178)
+size = Vector2(230.323, 18.7178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll4id"]
 size = Vector2(659, 773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gm03"]
 
 [node name="level_5" type="Node2D"]
 script = SubResource("GDScript_117ov")
@@ -86,13 +88,14 @@ position = Vector2(757, 962)
 gravity_scale = 0.0
 
 [node name="Shelf_1" type="StaticBody2D" parent="."]
-position = Vector2(2608, -650)
+position = Vector2(2736, 1078)
 collision_layer = 2
 collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_1"]
-position = Vector2(553.5, 1.5)
+position = Vector2(426.5, 18)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_opx0m")
 
 [node name="Shelf_2" type="StaticBody2D" parent="."]
@@ -117,12 +120,12 @@ collision_mask = 3
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_3"]
-position = Vector2(48.5, 4.5)
+position = Vector2(49.5, 4.5)
 shape = SubResource("RectangleShape2D_5il5q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shelf_3"]
-position = Vector2(49.9999, 1.50002)
-scale = Vector2(2.34171, 2.29412)
+position = Vector2(50.4999, 1.50002)
+scale = Vector2(2.34673, 2.29412)
 texture = ExtResource("4_14tpb")
 
 [node name="Shelf_4" type="StaticBody2D" parent="."]
@@ -143,12 +146,7 @@ texture = ExtResource("4_14tpb")
 [node name="Sound" parent="." instance=ExtResource("4_yycsc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-42, 755)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_v8j7j")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(3239, 356.54)
+position = Vector2(3170, 758)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_v8j7j")
 
@@ -159,7 +157,8 @@ collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(11.2806, -2.15838)
+position = Vector2(15.5746, -2.15838)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1yqmu")
 
 [node name="carrot6" parent="." instance=ExtResource("3_3t0is")]
@@ -213,6 +212,20 @@ show_behind_parent = true
 position = Vector2(3084, 573.5)
 scale = Vector2(1, 1.08268)
 texture = ExtResource("7_oiqnb")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_3gm03")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(3163, 1047.03)
+rotation = 1.5708
+scale = Vector2(3.78747, 2.58824)
+texture = ExtResource("4_14tpb")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
