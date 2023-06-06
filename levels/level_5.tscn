@@ -158,7 +158,6 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(15.5746, -2.15838)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1yqmu")
 
 [node name="carrot6" parent="." instance=ExtResource("3_3t0is")]
@@ -209,7 +208,7 @@ shape = SubResource("RectangleShape2D_ll4id")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 show_behind_parent = true
-position = Vector2(3084, 573.5)
+position = Vector2(3080, 574)
 scale = Vector2(1, 1.08268)
 texture = ExtResource("7_oiqnb")
 
