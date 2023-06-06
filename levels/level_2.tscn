@@ -104,6 +104,12 @@ position = Vector2(5877, 584)
 scale = Vector2(7.08794, 4.54412)
 texture = ExtResource("1_db2tv")
 
+[node name="vertical_shelf" type="Sprite2D" parent="."]
+position = Vector2(5204, 1093)
+rotation = -1.5708
+scale = Vector2(4.72565, 4.21188)
+texture = ExtResource("1_db2tv")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 3
