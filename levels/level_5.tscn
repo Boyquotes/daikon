@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://3wm33pegygnh"]
+[gd_scene load_steps=28 format=3 uid="uid://3wm33pegygnh"]
 
 [ext_resource type="Texture2D" uid="uid://bphb1yen6uqa0" path="res://assets/bg/finalbg1.png" id="1_dx50p"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dvh5babd81l4j" path="res://global/sound.tscn" id="4_yycsc"]
 [ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_738py"]
 [ext_resource type="Texture2D" uid="uid://uta3qouc0pqj" path="res://assets/bg/finalbg2.png" id="7_oiqnb"]
+[ext_resource type="FontFile" uid="uid://bwnkngnqnsxab" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="8_d6yvf"]
+[ext_resource type="Texture2D" uid="uid://banqtej88s5jr" path="res://assets/mechanic/mechanic_1.png" id="9_gg2qv"]
+[ext_resource type="Texture2D" uid="uid://r5tt0l6klkos" path="res://assets/mechanic/mechanic_2.png" id="10_t11lo"]
 
 [sub_resource type="GDScript" id="GDScript_117ov"]
 script/source = "extends Node2D
@@ -25,6 +28,42 @@ func _exit_tree():
 func _on_area_2d_body_entered(body):
 	if body.name == 'Player':
 		get_tree().change_scene_to_file(\"res://end.tscn\")
+
+
+func _on_carrot_detection_1_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
+
+func _on_carrot_detection_2_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
+
+func _on_carrot_detection_3_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
+
+func _on_carrot_detection_4_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
+
+func _on_carrot_detection_5_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
+
+func _on_carrot_detection_6_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
+
+func _on_carrot_detection_7_body_entered(body):
+	if body.name == 'Player':
+		get_tree().change_scene_to_file(\"res://levels/level_5.tscn\")
+
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opx0m"]
@@ -45,10 +84,52 @@ size = Vector2(1813.84, 64.9261)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yqmu"]
 size = Vector2(230.323, 18.7178)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wtdj0"]
+radius = 27.4461
+height = 210.544
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_womm3"]
+radius = 25.1504
+height = 209.228
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2wdn"]
+radius = 26.8687
+height = 211.521
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vnjii"]
+radius = 27.4606
+height = 211.513
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_na14y"]
+radius = 25.1586
+height = 214.95
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmsts"]
+radius = 25.1258
+height = 209.105
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6qghu"]
+radius = 27.9869
+height = 210.321
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll4id"]
 size = Vector2(659, 773)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gm03"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lab3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gg2qv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t11lo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [node name="level_5" type="Node2D"]
 script = SubResource("GDScript_117ov")
@@ -70,21 +151,17 @@ metadata/_edit_group_ = true
 [node name="Camera" parent="Player" index="1"]
 limit_right = 4000
 
-[node name="carrot" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(982, 783)
-gravity_scale = 0.0
-
-[node name="carrot2" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(-1148, 768)
-rotation = 1.58548
-gravity_scale = 0.0
-
-[node name="carrot3" parent="." instance=ExtResource("3_3t0is")]
+[node name="carrot_step_1" parent="." instance=ExtResource("3_3t0is")]
 position = Vector2(532, 1154)
 gravity_scale = 0.0
 
-[node name="carrot4" parent="." instance=ExtResource("3_3t0is")]
+[node name="carrot_step_2" parent="." instance=ExtResource("3_3t0is")]
 position = Vector2(757, 962)
+gravity_scale = 0.0
+
+[node name="carrot_step_3" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(982, 783)
+scale = Vector2(1.75, 1.75)
 gravity_scale = 0.0
 
 [node name="Shelf_1" type="StaticBody2D" parent="."]
@@ -109,6 +186,21 @@ position = Vector2(120, 12)
 shape = SubResource("RectangleShape2D_wvqwq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shelf_2"]
+position = Vector2(118.25, 15.75)
+scale = Vector2(2.18844, 2.85294)
+texture = ExtResource("4_14tpb")
+
+[node name="Shelf_5" type="StaticBody2D" parent="."]
+position = Vector2(94, 763)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf_5"]
+position = Vector2(120, 12)
+shape = SubResource("RectangleShape2D_wvqwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shelf_5"]
 position = Vector2(118.25, 15.75)
 scale = Vector2(2.18844, 2.85294)
 texture = ExtResource("4_14tpb")
@@ -160,45 +252,75 @@ collision_mask = 3
 position = Vector2(15.5746, -2.15838)
 shape = SubResource("RectangleShape2D_1yqmu")
 
-[node name="carrot6" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1205, 212)
+[node name="deadly_carrot_1" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1232, 227)
 rotation = -0.0202969
 gravity_scale = 0.0
 
-[node name="carrot7" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1347, 207)
+[node name="carrot_detection_1" type="Area2D" parent="deadly_carrot_1"]
+
+[node name="carrot_collision_1" type="CollisionShape2D" parent="deadly_carrot_1/carrot_detection_1"]
+shape = SubResource("CapsuleShape2D_wtdj0")
+
+[node name="deadly_carrot_2" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1374, 227)
 rotation = -0.00717044
 gravity_scale = 0.0
 
-[node name="carrot8" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1631, 207)
+[node name="carrot_detection_2" type="Area2D" parent="deadly_carrot_2"]
+
+[node name="carrot_collision_2" type="CollisionShape2D" parent="deadly_carrot_2/carrot_detection_2"]
+shape = SubResource("CapsuleShape2D_womm3")
+
+[node name="deadly_carrot_3" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1522, 224)
 rotation = -0.00717044
 gravity_scale = 0.0
 
-[node name="carrot9" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1489, 207)
+[node name="carrot_detection_3" type="Area2D" parent="deadly_carrot_3"]
+
+[node name="carrot_collision_3" type="CollisionShape2D" parent="deadly_carrot_3/carrot_detection_3"]
+shape = SubResource("CapsuleShape2D_a2wdn")
+
+[node name="deadly_carrot_4" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1669, 227)
 rotation = -0.00717044
 gravity_scale = 0.0
 
-[node name="carrot10" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1780, 268)
+[node name="carrot_detection_4" type="Area2D" parent="deadly_carrot_4"]
+
+[node name="carrot_collision_4" type="CollisionShape2D" parent="deadly_carrot_4/carrot_detection_4"]
+shape = SubResource("CapsuleShape2D_vnjii")
+
+[node name="deadly_carrot_5" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1812, 280)
 rotation = -0.00717044
 gravity_scale = 0.0
 
-[node name="carrot11" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1907, 385)
+[node name="carrot_detection_5" type="Area2D" parent="deadly_carrot_5"]
+
+[node name="carrot_collision_5" type="CollisionShape2D" parent="deadly_carrot_5/carrot_detection_5"]
+shape = SubResource("CapsuleShape2D_na14y")
+
+[node name="deadly_carrot_6" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(1946, 387)
 rotation = -0.00717044
 gravity_scale = 0.0
 
-[node name="carrot12" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(2034, 488)
+[node name="carrot_detection_6" type="Area2D" parent="deadly_carrot_6"]
+
+[node name="carrot_collision_6" type="CollisionShape2D" parent="deadly_carrot_6/carrot_detection_6"]
+shape = SubResource("CapsuleShape2D_mmsts")
+
+[node name="deadly_carrot_7" parent="." instance=ExtResource("3_3t0is")]
+position = Vector2(2080, 535)
 rotation = -0.00717044
 gravity_scale = 0.0
 
-[node name="glass_jar" parent="." instance=ExtResource("5_738py")]
-position = Vector2(1342, 520)
-collision_layer = 2
-collision_mask = 3
+[node name="carrot_detection_7" type="Area2D" parent="deadly_carrot_7"]
+
+[node name="carrot_collision_7" type="CollisionShape2D" parent="deadly_carrot_7/carrot_detection_7"]
+shape = SubResource("CapsuleShape2D_6qghu")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -226,6 +348,49 @@ rotation = 1.5708
 scale = Vector2(3.78747, 2.58824)
 texture = ExtResource("4_14tpb")
 
+[node name="glass_jar" parent="." instance=ExtResource("5_738py")]
+position = Vector2(1349, 523)
+collision_layer = 2
+collision_mask = 3
+
+[node name="carrot_warning" type="Label" parent="."]
+offset_left = 171.0
+offset_top = 378.0
+offset_right = 845.0
+offset_bottom = 662.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("8_d6yvf")
+theme_override_font_sizes/font_size = 60
+text = "Use the jar to protect yourself from the pointy carrots!"
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="mechanic_level_5" type="StaticBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mechanic_level_5"]
+position = Vector2(129, 646)
+scale = Vector2(0.123, 0.123)
+sprite_frames = SubResource("SpriteFrames_4lab3")
+animation = &"Idle"
+frame = 1
+frame_progress = 0.820364
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mechanic_level_5"]
+
+[connection signal="body_entered" from="deadly_carrot_1/carrot_detection_1" to="." method="_on_carrot_detection_1_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_2/carrot_detection_2" to="." method="_on_carrot_detection_2_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_3/carrot_detection_3" to="." method="_on_carrot_detection_3_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_4/carrot_detection_4" to="." method="_on_carrot_detection_4_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_5/carrot_detection_5" to="." method="_on_carrot_detection_5_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_6" to="." method="_on_deadly_carrot_6_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_6/carrot_detection_6" to="." method="_on_carrot_detection_6_body_entered"]
+[connection signal="body_entered" from="deadly_carrot_7/carrot_detection_7" to="." method="_on_carrot_detection_7_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
 [editable path="Player"]
