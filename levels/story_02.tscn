@@ -47,8 +47,10 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("1_tyy4f")
 
 [node name="Prev" type="Button" parent="."]
-offset_right = 224.0
-offset_bottom = 153.0
+offset_left = 55.0
+offset_top = 5.0
+offset_right = 279.0
+offset_bottom = 158.0
 size_flags_horizontal = 8
 theme = ExtResource("2_tveyh")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -65,8 +67,10 @@ text = "Back"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -224.0
-offset_bottom = 153.0
+offset_left = -280.0
+offset_top = 5.0
+offset_right = -56.0
+offset_bottom = 158.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 theme = ExtResource("2_tveyh")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcbk4d7ba65xh"]
 
-[ext_resource type="Texture2D" uid="uid://c24cnad1ck0ba" path="res://assets/intro_story/247G_Intro_05.jpeg" id="1_rnv7x"]
+[ext_resource type="Texture2D" uid="uid://c7lfqv1vudotb" path="res://assets/intro_story/247G_Intro_05.png" id="1_s4jb5"]
 [ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_bga11"]
 
 [sub_resource type="GDScript" id="GDScript_2l3w1"]
@@ -42,13 +42,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="247gIntro05" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(25, 2.08165e-12)
-scale = Vector2(3, 3)
-texture = ExtResource("1_rnv7x")
+position = Vector2(19, 19)
+scale = Vector2(2.35221, 2.35221)
+texture = ExtResource("1_s4jb5")
 
-[node name="Prev" type="Button" parent="."]
-offset_right = 224.0
-offset_bottom = 153.0
+[node name="Back" type="Button" parent="."]
+offset_left = 55.0
+offset_top = 5.0
+offset_right = 279.0
+offset_bottom = 158.0
 size_flags_horizontal = 8
 theme = ExtResource("2_bga11")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -65,8 +67,10 @@ text = "Back"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -224.0
-offset_bottom = 153.0
+offset_left = -280.0
+offset_top = 5.0
+offset_right = -56.0
+offset_bottom = 158.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 theme = ExtResource("2_bga11")
@@ -80,5 +84,5 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_nfsnk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1dlw")
 text = "Next"
 
-[connection signal="pressed" from="Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_prev_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

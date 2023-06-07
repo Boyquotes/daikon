@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dl6rfxsvbwgxa"]
 
-[ext_resource type="Texture2D" uid="uid://cvwxqf4nr3tm4" path="res://assets/intro_story/247G_Intro_06.jpeg" id="1_fetmt"]
+[ext_resource type="Texture2D" uid="uid://dtmeak0186rme" path="res://assets/intro_story/247G_Intro_06.png" id="1_wf38g"]
 [ext_resource type="Theme" uid="uid://ccxxjd7a561ol" path="res://assets/themes/main.tres" id="2_owwln"]
 
 [sub_resource type="GDScript" id="GDScript_ofyu3"]
@@ -42,9 +42,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="247gIntro06" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(2.08165e-12, 200)
-scale = Vector2(2.9, 2.9)
-texture = ExtResource("1_fetmt")
+position = Vector2(6.65248, 19.1)
+scale = Vector2(2.41186, 2.34089)
+texture = ExtResource("1_wf38g")
 
 [node name="Prev" type="Button" parent="."]
 offset_right = 224.0
