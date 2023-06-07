@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://3wm33pegygnh"]
+[gd_scene load_steps=26 format=3 uid="uid://3wm33pegygnh"]
 
 [ext_resource type="Texture2D" uid="uid://bphb1yen6uqa0" path="res://assets/bg/finalbg1.png" id="1_dx50p"]
 [ext_resource type="PackedScene" uid="uid://d12v1rqhcdog7" path="res://player.tscn" id="2_8kpm8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://e3skuvhsdsfx" path="res://objects/glass_jar.tscn" id="5_738py"]
 [ext_resource type="Texture2D" uid="uid://uta3qouc0pqj" path="res://assets/bg/finalbg2.png" id="7_oiqnb"]
 [ext_resource type="PackedScene" uid="uid://canlelm3tdg2l" path="res://objects/mechanic.tscn" id="8_wbhvf"]
+[ext_resource type="PackedScene" uid="uid://cvtrx2oe2ag7a" path="res://objects/potato.tscn" id="9_7feph"]
 
 [sub_resource type="GDScript" id="GDScript_117ov"]
 script/source = "extends Node2D
@@ -136,15 +137,15 @@ metadata/_edit_group_ = true
 limit_right = 4000
 
 [node name="carrot_step_1" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(532, 1154)
+position = Vector2(-246, 1123)
 gravity_scale = 0.0
 
 [node name="carrot_step_2" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(757, 962)
+position = Vector2(-317, 899)
 gravity_scale = 0.0
 
 [node name="carrot_step_3" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(982, 783)
+position = Vector2(-314, 675)
 gravity_scale = 0.0
 
 [node name="Shelf_1" type="StaticBody2D" parent="."]
@@ -276,7 +277,7 @@ gravity_scale = 0.0
 shape = SubResource("CapsuleShape2D_vnjii")
 
 [node name="deadly_carrot_5" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(1812, 280)
+position = Vector2(1812, 228)
 rotation = -0.00717044
 gravity_scale = 0.0
 
@@ -355,6 +356,15 @@ text = "Use the jar to protect
 yourself from the
 dangerous carrots!"
 horizontal_alignment = 1
+
+[node name="potato" parent="." instance=ExtResource("9_7feph")]
+position = Vector2(483, 1122)
+
+[node name="potato2" parent="." instance=ExtResource("9_7feph")]
+position = Vector2(712, 932)
+
+[node name="potato3" parent="." instance=ExtResource("9_7feph")]
+position = Vector2(994, 747)
 
 [connection signal="body_entered" from="deadly_carrot_1/carrot_detection_1" to="." method="_on_carrot_detection_1_body_entered"]
 [connection signal="body_entered" from="deadly_carrot_2/carrot_detection_2" to="." method="_on_carrot_detection_2_body_entered"]
