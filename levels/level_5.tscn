@@ -136,18 +136,6 @@ metadata/_edit_group_ = true
 [node name="Camera" parent="Player" index="1"]
 limit_right = 4000
 
-[node name="carrot_step_1" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(-246, 1123)
-gravity_scale = 0.0
-
-[node name="carrot_step_2" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(-317, 899)
-gravity_scale = 0.0
-
-[node name="carrot_step_3" parent="." instance=ExtResource("3_3t0is")]
-position = Vector2(-314, 675)
-gravity_scale = 0.0
-
 [node name="Shelf_1" type="StaticBody2D" parent="."]
 position = Vector2(2736, 1078)
 collision_layer = 2
@@ -348,23 +336,25 @@ position = Vector2(-10.5, 37.5)
 
 [node name="Text" parent="mechanic" index="4"]
 visible = true
-offset_left = -78.0
-offset_top = -282.0
-offset_right = 741.0
-offset_bottom = 8.0
-text = "Use the jar to protect 
-yourself from the
-dangerous carrots!"
+offset_left = -85.0
+offset_top = -289.0
+offset_right = 734.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 50
+text = "Use the jar to avoid 
+the carrots!
+If you touch a carrot,
+ you'll have to restart!"
 horizontal_alignment = 1
 
-[node name="potato" parent="." instance=ExtResource("9_7feph")]
-position = Vector2(483, 1122)
+[node name="potato_step_1" parent="." instance=ExtResource("9_7feph")]
+position = Vector2(538, 1171)
 
-[node name="potato2" parent="." instance=ExtResource("9_7feph")]
-position = Vector2(712, 932)
+[node name="potato_step_2" parent="." instance=ExtResource("9_7feph")]
+position = Vector2(760, 981)
 
-[node name="potato3" parent="." instance=ExtResource("9_7feph")]
-position = Vector2(994, 747)
+[node name="potato_step_3" parent="." instance=ExtResource("9_7feph")]
+position = Vector2(1028, 796)
 
 [connection signal="body_entered" from="deadly_carrot_1/carrot_detection_1" to="." method="_on_carrot_detection_1_body_entered"]
 [connection signal="body_entered" from="deadly_carrot_2/carrot_detection_2" to="." method="_on_carrot_detection_2_body_entered"]
